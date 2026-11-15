@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>ATLAS – akvárium a farma v jednom</title>
+<title>ATLAS – akvapónická farma na stole</title>
 <meta name="description" content="Študentský projekt ATLAS: rybičky a zelenina v jednom stolovom akváriu, ktoré sa 3 mesiace postará samo.">
-<meta property="og:title" content="ATLAS – rybičky + zelenina = moja farma na stole">
+<meta property="og:title" content="ATLAS – moja akvapónická farma na stole">
 <meta property="og:description" content="Akvárium a farma v jednom, ktoré sa 3 mesiace postará samo. Chcete mi pomôcť?">
-<meta property="og:image" content="https://flochmaros.github.io/atlas/hero-neon.webp">
+<meta property="og:image" content="https://flochmaros.github.io/atlas/img/akvaponia.jpg">
 <meta name="theme-color" content="#14284B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -207,36 +207,6 @@ a{color:inherit}
 footer{padding-block:26px;font-size:14px;color:#AFC0DA;background:var(--navy)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
-/* hero: zive akvarium (fotky + svetlo + bublinky) */
-.scene{position:relative;perspective:1200px}
-.tank{position:relative;border-radius:34px;overflow:hidden;aspect-ratio:4/5;background:#0B2033;box-shadow:0 50px 90px -40px rgba(20,40,75,.75),0 0 0 8px rgba(255,255,255,.55);transform-style:preserve-3d;will-change:transform}
-.tank::after{content:"";position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 26%,rgba(255,255,255,0) 70%,rgba(255,255,255,.08) 100%);pointer-events:none;z-index:5}
-.bed{position:absolute;inset:0 0 60% 0;overflow:hidden}
-.bed img{width:100%;height:118%;object-fit:cover;object-position:50% 40%;display:block;will-change:transform}
-.bed::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(180deg,rgba(11,32,51,0),rgba(11,32,51,.85))}
-.water{position:absolute;inset:40% 0 0 0;overflow:hidden;border-top:3px solid rgba(160,235,240,.75);box-shadow:inset 0 14px 30px -14px rgba(160,235,240,.6)}
-.fishimg{position:absolute;inset:-6%;background:url(hero-neon.webp) 30% 52%/cover no-repeat;will-change:transform}
-.caustic{position:absolute;inset:-20%;mix-blend-mode:screen;opacity:.22;pointer-events:none;
-  background:radial-gradient(40px 18px at 20% 30%,#BFF6F7,transparent 70%),radial-gradient(60px 22px at 60% 20%,#BFF6F7,transparent 70%),radial-gradient(50px 20px at 80% 50%,#BFF6F7,transparent 70%),radial-gradient(70px 26px at 35% 65%,#BFF6F7,transparent 70%),radial-gradient(44px 16px at 70% 80%,#BFF6F7,transparent 70%);
-  background-size:220px 160px;animation:caustic 9s linear infinite}
-@keyframes caustic{to{background-position:220px 160px}}
-.rays{position:absolute;inset:-30% -10% 0 20%;pointer-events:none;mix-blend-mode:screen;opacity:.6}
-.rays i{position:absolute;top:-10%;width:10%;height:130%;background:linear-gradient(180deg,rgba(170,240,245,.38),rgba(170,240,245,0) 75%);transform-origin:top center;filter:blur(12px);animation:ray 7s ease-in-out infinite alternate}
-.rays i:nth-child(1){left:30%;transform:rotate(16deg);animation-delay:-1s}.rays i:nth-child(2){left:46%;width:6%;transform:rotate(12deg);animation-delay:-3s}
-.rays i:nth-child(3){left:60%;width:12%;transform:rotate(19deg);animation-delay:-5s}.rays i:nth-child(4){left:76%;width:5%;transform:rotate(14deg);animation-delay:-2s}
-@keyframes ray{from{opacity:.3}to{opacity:1}}
-#bubbles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.drip{position:absolute;right:14%;top:calc(40% - 64px);width:20px;height:76px;z-index:4;filter:drop-shadow(0 0 6px rgba(60,198,201,.8))}
-.chip{position:absolute;z-index:6;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:18px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 18px 40px -18px rgba(20,40,75,.55);animation:bob 6s ease-in-out infinite}
-.chip .ci{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;flex:none}
-.chip .ci svg{width:22px;height:22px}
-.chip b{display:block;font:800 19px/1.1 var(--display);font-variant-numeric:tabular-nums}
-.chip small{font-size:13px;color:var(--soft)}
-.c1{left:-34px;top:52%}
-.c2{right:-26px;top:9%;animation-delay:-2s}
-.c3{right:-18px;bottom:9%;animation-delay:-4s}
-@keyframes bob{50%{transform:translateY(-10px)}}
-.sample{position:absolute;left:0;right:0;bottom:-32px;text-align:center;font-size:13px;color:var(--mute)}
 /* fotky v kartach */
 .tile .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .tile:hover .pic img{transform:scale(1.08)}
@@ -251,7 +221,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 .tile,.pk{transform-style:preserve-3d}
 
 @media (max-width:980px){
-  .c1{left:10px}.c2{right:10px}.c3{right:10px}
   .hero .wrap,.how,.help-grid{grid-template-columns:1fr}
   .scene{max-width:520px}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -272,7 +241,62 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   .tile p{display:none}
   .pk-list,.alone{grid-template-columns:1fr}
   .tile[aria-selected=true]::after{display:none}
-  .chip{padding:8px 12px 8px 8px;gap:8px;border-radius:14px}.chip .ci{width:32px;height:32px;border-radius:10px}.chip .ci svg{width:18px;height:18px}.chip b{font-size:16px}.chip small{font-size:12px}
+}
+
+/* ===== v3: tmavy hero s akvaponiou, viac kontrastu ===== */
+body{background:#DCEEF2}
+.hero{background:var(--navy);color:#fff;padding-block:56px 64px}
+.hero .glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(600px 400px at 85% 20%,rgba(60,198,201,.35),transparent 70%),radial-gradient(500px 360px at 5% 100%,rgba(242,169,34,.22),transparent 70%)}
+.hero .wrap{grid-template-columns:.95fr 1.05fr;gap:48px}
+.hero .kick{color:var(--aqua)}
+.hero h1{color:#fff;margin-top:10px;font-size:clamp(40px,5.6vw,72px)}
+.hero h1 em{color:var(--aqua)}
+.hero h1 em::after{opacity:.9;height:.12em;bottom:-.02em}
+.hero .lead{color:#C9D6EA}
+.def{margin-top:18px;display:inline-block;padding:12px 16px;border-radius:14px;background:rgba(60,198,201,.12);border:1px solid rgba(60,198,201,.4);color:#DDF4F4;font-size:16px;max-width:52ch}
+.def b{color:var(--sun)}
+.hero .btn.ghost{border-color:rgba(255,255,255,.7);color:#fff}
+.hero .btn.ghost:hover{background:#fff;color:var(--navy)}
+.ap{margin:0;perspective:1200px;min-width:0}
+.ap-frame{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 40px 90px -30px rgba(0,0,0,.7),0 0 0 6px rgba(255,255,255,.08);transform-style:preserve-3d}
+.ap-frame img{position:absolute;left:-3%;top:-3%;width:106%;height:106%;object-fit:cover;display:block;filter:saturate(1.15) contrast(1.05)}
+.ap-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,40,75,0) 55%,rgba(20,40,75,.35));pointer-events:none}
+#bubbles{position:absolute;left:12%;top:74%;width:62%;height:26%;pointer-events:none;z-index:1}
+.ap-ov{position:absolute;inset:0;width:100%;height:100%;z-index:2}
+.fl{fill:none;stroke-width:10;stroke-linecap:round;stroke-dasharray:2 22;animation:flow2 1s linear infinite}
+.fl.up{stroke:var(--sun);filter:drop-shadow(0 0 6px #F2A922)}
+.fl.dn{stroke:var(--aqua);filter:drop-shadow(0 0 6px #3CC6C9)}
+@keyframes flow2{to{stroke-dashoffset:-24}}
+.pin circle{fill:var(--sun);stroke:#fff;stroke-width:6}
+.pin text{font:800 36px var(--display);fill:var(--navy);text-anchor:middle}
+.pin{animation:pinp 2.4s var(--d) ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pinp{50%{transform:scale(1.12)}}
+.lbl{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 7px;border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--navy);font-weight:700;font-size:15px;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);white-space:nowrap}
+.lbl i{animation:pinp 2.4s ease-in-out infinite}
+.lbl i,.legend i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font:800 14px var(--display);flex:none}
+.lbl{transform:translateY(-50%)}.l1{left:calc(23% - 20px);top:88%}.l2{right:calc(27.4% - 20px);top:54%;flex-direction:row-reverse;padding:7px 7px 7px 12px}.l3{left:calc(54.7% - 20px);top:12.5%}.l4{left:calc(42% - 20px);top:67.7%}
+.legend{display:none;list-style:none;margin:14px 0 0;padding:0;grid-template-columns:1fr 1fr;gap:8px}
+.legend li{display:flex;align-items:center;gap:8px;font-size:15px;color:#DDE6F2}
+.ap figcaption{margin-top:14px;font-size:14px;color:#9FB2CF}
+.ap figcaption a{color:#9FB2CF}
+/* farebne dlazdice */
+.tiles-wrap{background:linear-gradient(180deg,var(--navy) 0 60px,transparent 60px)}
+.tile[data-go=ako]{background:var(--aqua)}
+.tile[data-go=ako] p{color:#0E4A4C}
+.tile.help{background:var(--sun)}
+.tile.help .pic{background:#FFF4DC}
+.tile.help p{color:#5A3D05}
+.tile.help h3::after{color:var(--navy)}
+.tile[aria-selected=true]{box-shadow:0 0 0 4px #fff,0 0 0 7px var(--navy),0 22px 40px -24px rgba(20,40,75,.55)}
+.alone{background:var(--navy);border-radius:24px;padding:22px}
+.alone div{background:rgba(255,255,255,.07);color:#fff}
+.alone p{color:#C9D6EA}
+@media (max-width:980px){.hero .wrap{grid-template-columns:1fr}.ap{max-width:640px}}
+@media (max-width:640px){
+  .lbl{font-size:0;gap:0;padding:3px!important}
+  .legend{display:grid}
+  .hero{padding-top:30px}
+  .tiles-wrap{background:linear-gradient(180deg,var(--navy) 0 40px,transparent 40px)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
@@ -283,25 +307,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   <div class="wrap">
     <a class="logo" href="#ako" data-go="ako" aria-label="ATLAS – na začiatok">
       <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="14" width="34" height="23" rx="6" fill="#3CC6C9"/><path d="M3 21h34" stroke="#fff" stroke-width="2" opacity=".5"/><path d="M11 29c3-4 9-4 12 0-3 4-9 4-12 0z" fill="#F2A922"/><path d="M23 29l4-3v6z" fill="#F2A922"/><path d="M20 14c0-6 3-9 9-10-1 6-4 9-9 10zM20 14c-1-5-4-7-9-7 1 5 4 7 9 7z" fill="#4FAE72"/></svg>
-      <span><b data-name>ATLAS</b><small>akvárium a farma v jednom</small></span></a>
+      <span><b data-name>ATLAS</b><small>akvapónická farma na stole</small></span></a>
     <span class="mini" aria-hidden="true">Cieľ <span class="bar"><i id="miniBar"></i></span><b id="miniPct">0 %</b></span>
     <button class="btn pri small" type="button" data-go="pomoc">Pomôcť mi</button>
   </div>
 </header>
 
 <section class="hero gut">
-  <svg class="deco" viewBox="0 0 1400 620" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <circle cx="1250" cy="40" r="230" fill="#3CC6C9" opacity=".16"/>
-    <circle cx="1180" cy="120" r="90" fill="#F2A922" opacity=".18"/>
-    <path d="M0 520c160-40 300 30 470 0s320-60 500-10 300 30 430-10V620H0z" fill="#3CC6C9" opacity=".12"/>
-    <path d="M0 570c200-30 360 20 560-5s380-40 560 0 200 10 280-10V620H0z" fill="#3CC6C9" opacity=".14"/>
-    <g fill="#4FAE72" opacity=".12"><path d="M60 620c-40-90-20-190 50-260 14 100-10 190-50 260z"/><path d="M110 620c20-90 80-140 170-150-24 90-80 140-170 150z"/><path d="M1340 620c-50-70-50-160 0-230 36 80 36 160 0 230z"/></g>
-    <g fill="none" stroke="#14284B" stroke-width="2" opacity=".12"><circle cx="640" cy="90" r="9"/><circle cx="668" cy="60" r="6"/><circle cx="650" cy="36" r="4"/><circle cx="90" cy="120" r="7"/><circle cx="110" cy="96" r="4"/></g>
-  </svg>
+  <div class="glow" aria-hidden="true"></div>
   <div class="wrap">
-    <div>
-      <h1 class="h-in">Rybičky + zelenina = <em>moja farma</em> na stole</h1>
-      <p class="lead h-in">Rybičky hnoja rastliny a rastliny im čistia vodu. Malý počítač sa postará o zvyšok – celé 3 mesiace bez pomoci človeka.</p>
+    <div class="hero-txt">
+      <p class="kick h-in">Študentský projekt ATLAS</p>
+      <h1 class="h-in">Moja <em>akvapónická</em> farma na stole</h1>
+      <p class="lead h-in">Rybičky hnoja zeleninu a zelenina im za to čistí vodu. Jeden kolobeh, žiadna zemina – a ATLAS ho udrží 3 mesiace úplne sám.</p>
+      <p class="def h-in"><b>Akvapónia</b> = chov rybičiek + pestovanie zeleniny vo vode. Navzájom si pomáhajú.</p>
       <div class="ctas h-in">
         <button class="btn pri" type="button" data-go="pomoc">Chcete mi pomôcť? <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg></button>
         <button class="btn ghost" type="button" data-go="ako">Ako to funguje</button>
@@ -311,21 +330,23 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
         <div><b id="goalTxt">Načítavam…</b><span id="goalSub">Môj cieľ: kúpiť všetky súčiastky do Vianoc.</span></div>
       </div>
     </div>
-    <div class="scene h-scene" id="scene">
-      <div class="tank">
-        <div class="bed"><img src="img/zelenina.jpg" alt="Zelená listová zelenina rastie v pestovacom lôžku" width="1000" height="667"></div>
-        <div class="water" role="img" aria-label="Rybička pláva medzi vodnými rastlinami">
-          <div class="fishimg"></div><div class="caustic"></div>
-          <div class="rays" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-          <canvas id="bubbles" aria-hidden="true"></canvas>
-        </div>
-        <svg class="drip" viewBox="0 0 40 120" aria-hidden="true"><path class="flow down" d="M20 0V120" stroke="#3CC6C9" stroke-width="6" fill="none"/></svg>
+    <figure class="ap h-scene">
+      <div class="ap-frame">
+        <img src="img/akvaponia.jpg" alt="Veľká akvapónia v skleníku: dole nádrž s rybami, nad ňou police so zeleninou a bylinkami" width="1280" height="960">
+        <canvas id="bubbles" aria-hidden="true"></canvas>
+        <svg class="ap-ov" viewBox="0 0 1280 960" aria-hidden="true">
+          <path class="fl up" d="M860 880Q930 860 930 780V260Q930 205 875 195"/>
+          <path class="fl dn" d="M770 452C690 468 615 480 590 518"/>
+          <path class="fl dn" d="M638 735C640 755 644 772 650 795"/>
+        </svg>
+        <span class="lbl l1"><i>1</i>Rybičky robia hnojivo</span>
+        <span class="lbl l2"><i>2</i>Čerpadlo vozí vodu hore</span>
+        <span class="lbl l3"><i>3</i>Zelenina si ho vypije</span>
+        <span class="lbl l4"><i>4</i>Čistá voda tečie späť</span>
       </div>
-      <div class="chip c1"><span class="ci" style="background:var(--aqua-10);color:var(--aqua-d)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3a2.5 2.5 0 00-2.5 2.5v8.2a4.5 4.5 0 105 0V5.5A2.5 2.5 0 0012 3z"/><path d="M12 10v6"/></svg></span><span><b>24,6 °C</b><small>teplota vody</small></span></div>
-      <div class="chip c2"><span class="ci" style="background:#E2F3E8;color:#2F8A55"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 13C11 8 7 6 3 7c1 5 4 7 9 6zM12 11c1-6 5-8 9-8-1 6-5 8-9 8z"/></svg></span><span><b>12. deň</b><small>zelenina rastie</small></span></div>
-      <div class="chip c3"><span class="ci" style="background:var(--sun-10);color:var(--sun-d)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span><span><b>8:00</b><small>rybičky nakŕmené</small></span></div>
-      <p class="sample">ukážka – živé údaje budú od jari 2027</p>
-    </div>
+      <ol class="legend"><li><i>1</i>Rybičky robia hnojivo</li><li><i>2</i>Čerpadlo vozí vodu hore</li><li><i>3</i>Zelenina si ho vypije</li><li><i>4</i>Čistá voda tečie späť</li></ol>
+      <figcaption>Takto vyzerá veľká akvapónia v skleníku. ATLAS bude jej malá verzia na stole. <a href="https://commons.wikimedia.org/wiki/File:Aquaponics_at_Growing_Power,_Milwaukee.jpg" target="_blank" rel="noopener">Foto: ryan griffis, CC BY-SA 2.0</a></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -463,7 +484,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   </div>
 </main>
 
-<footer class="gut"><div class="wrap"><span><span data-name>ATLAS</span> · Autonomous Tank Life-Assist System · 2026</span><span>Fotky: Pexels · navrhnuté s pomocou AI Claude</span></div></footer>
+<footer class="gut"><div class="wrap"><span><span data-name>ATLAS</span> · Autonomous Tank Life-Assist System · 2026</span><span>Fotky: Pexels, Wikimedia Commons (ryan griffis, CC BY-SA 2.0) · navrhnuté s pomocou AI Claude</span></div></footer>
 
 <script src="config.js"></script>
 <script src="polozky.js"></script>
@@ -644,20 +665,18 @@ if(!REDUCE&&window.gsap){
     if(!document.hidden)requestAnimationFrame(f);else setTimeout(()=>requestAnimationFrame(f),500)})(0);
 })();
 if(!REDUCE&&matchMedia("(pointer:fine)").matches&&window.gsap){
-  const tank=$(".tank"),fish=$(".fishimg"),bed=$(".bed img");
+  const img=$(".ap-frame img");
   addEventListener("pointermove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
-    gsap.to(tank,{rotateY:x*6,rotateX:-y*5,duration:1.2,ease:"power3.out"});
-    gsap.to(fish,{x:x*-22,y:y*-14,duration:1.4,ease:"power3.out"});
-    gsap.to(bed,{x:x*-12,y:y*-8,duration:1.4,ease:"power3.out"});
-    gsap.to(".chip",{x:x*18,y:y*12,duration:1.6,ease:"power3.out",stagger:.05})},{passive:true});
+    gsap.to(".ap-frame",{rotateY:x*5,rotateX:-y*4,duration:1.2,ease:"power3.out"});
+    gsap.to(img,{x:x*-14,y:y*-10,duration:1.4,ease:"power3.out"})},{passive:true});
   document.querySelectorAll(".tile,.pk").forEach(el=>{
     el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();gsap.to(el,{rotateY:((e.clientX-r.left)/r.width-.5)*8,rotateX:-((e.clientY-r.top)/r.height-.5)*8,transformPerspective:800,duration:.5,ease:"power2.out"})});
     el.addEventListener("pointerleave",()=>gsap.to(el,{rotateX:0,rotateY:0,duration:.7,ease:"power3.out"}));
   });
 }
 if(!REDUCE&&window.gsap){
-  gsap.from(".chip",{scale:.6,opacity:0,y:20,duration:.9,stagger:.15,delay:.9,ease:"back.out(1.8)"});
-  gsap.from(".tank",{clipPath:"inset(100% 0 0 0 round 34px)",duration:1.4,ease:"power4.out",delay:.1});
+  gsap.from(".ap-frame",{clipPath:"inset(0 0 100% 0 round 28px)",duration:1.4,ease:"power4.out",delay:.1});
+    gsap.from(".lbl",{opacity:0,scale:.6,duration:.6,stagger:.25,delay:1.2,ease:"power2.out"});
 }
 /* pocitadlo sumy (plynuly nabeh) */
 const _rg=renderGoal;
