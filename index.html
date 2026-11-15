@@ -82,7 +82,6 @@ a{color:inherit}
 .ring .fg{stroke:var(--sun);transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
 .goal b{font:800 24px var(--display);font-variant-numeric:tabular-nums}
 .goal span{display:block;color:var(--soft);font-size:16px;line-height:1.4}
-.scene svg{width:100%;height:auto;display:block;overflow:visible}
 
 /* karty-obrazovky */
 .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;padding-block:8px 28px}
@@ -208,7 +207,51 @@ a{color:inherit}
 footer{padding-block:26px;font-size:14px;color:#AFC0DA;background:var(--navy)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 
+/* hero: zive akvarium (fotky + svetlo + bublinky) */
+.scene{position:relative;perspective:1200px}
+.tank{position:relative;border-radius:34px;overflow:hidden;aspect-ratio:4/5;background:#0B2033;box-shadow:0 50px 90px -40px rgba(20,40,75,.75),0 0 0 8px rgba(255,255,255,.55);transform-style:preserve-3d;will-change:transform}
+.tank::after{content:"";position:absolute;inset:0;background:linear-gradient(118deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 26%,rgba(255,255,255,0) 70%,rgba(255,255,255,.08) 100%);pointer-events:none;z-index:5}
+.bed{position:absolute;inset:0 0 60% 0;overflow:hidden}
+.bed img{width:100%;height:118%;object-fit:cover;object-position:50% 40%;display:block;will-change:transform}
+.bed::after{content:"";position:absolute;inset:auto 0 0 0;height:46%;background:linear-gradient(180deg,rgba(11,32,51,0),rgba(11,32,51,.85))}
+.water{position:absolute;inset:40% 0 0 0;overflow:hidden;border-top:3px solid rgba(160,235,240,.75);box-shadow:inset 0 14px 30px -14px rgba(160,235,240,.6)}
+.fishimg{position:absolute;inset:-6%;background:url(hero-neon.webp) 30% 52%/cover no-repeat;will-change:transform}
+.caustic{position:absolute;inset:-20%;mix-blend-mode:screen;opacity:.22;pointer-events:none;
+  background:radial-gradient(40px 18px at 20% 30%,#BFF6F7,transparent 70%),radial-gradient(60px 22px at 60% 20%,#BFF6F7,transparent 70%),radial-gradient(50px 20px at 80% 50%,#BFF6F7,transparent 70%),radial-gradient(70px 26px at 35% 65%,#BFF6F7,transparent 70%),radial-gradient(44px 16px at 70% 80%,#BFF6F7,transparent 70%);
+  background-size:220px 160px;animation:caustic 9s linear infinite}
+@keyframes caustic{to{background-position:220px 160px}}
+.rays{position:absolute;inset:-30% -10% 0 20%;pointer-events:none;mix-blend-mode:screen;opacity:.6}
+.rays i{position:absolute;top:-10%;width:10%;height:130%;background:linear-gradient(180deg,rgba(170,240,245,.38),rgba(170,240,245,0) 75%);transform-origin:top center;filter:blur(12px);animation:ray 7s ease-in-out infinite alternate}
+.rays i:nth-child(1){left:30%;transform:rotate(16deg);animation-delay:-1s}.rays i:nth-child(2){left:46%;width:6%;transform:rotate(12deg);animation-delay:-3s}
+.rays i:nth-child(3){left:60%;width:12%;transform:rotate(19deg);animation-delay:-5s}.rays i:nth-child(4){left:76%;width:5%;transform:rotate(14deg);animation-delay:-2s}
+@keyframes ray{from{opacity:.3}to{opacity:1}}
+#bubbles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.drip{position:absolute;right:14%;top:calc(40% - 64px);width:20px;height:76px;z-index:4;filter:drop-shadow(0 0 6px rgba(60,198,201,.8))}
+.chip{position:absolute;z-index:6;display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:18px;background:rgba(255,255,255,.82);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 18px 40px -18px rgba(20,40,75,.55);animation:bob 6s ease-in-out infinite}
+.chip .ci{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;flex:none}
+.chip .ci svg{width:22px;height:22px}
+.chip b{display:block;font:800 19px/1.1 var(--display);font-variant-numeric:tabular-nums}
+.chip small{font-size:13px;color:var(--soft)}
+.c1{left:-34px;top:52%}
+.c2{right:-26px;top:9%;animation-delay:-2s}
+.c3{right:-18px;bottom:9%;animation-delay:-4s}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.sample{position:absolute;left:0;right:0;bottom:-32px;text-align:center;font-size:13px;color:var(--mute)}
+/* fotky v kartach */
+.tile .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.tile:hover .pic img{transform:scale(1.08)}
+.alone .ph{display:block;height:150px;border-radius:16px;overflow:hidden;margin-bottom:6px}
+.alone .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.alone div:hover .ph img{transform:scale(1.06)}
+.pk .ill.photo{position:relative;height:130px;overflow:hidden;padding:0}
+.pk .ill.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.pk:hover .ill.photo img{transform:scale(1.07)}
+.pk .ill .badge{position:absolute;left:10px;bottom:10px;width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.9);display:grid;place-items:center;box-shadow:0 8px 18px -8px rgba(20,40,75,.6)}
+.pk .ill .badge svg{height:36px;width:auto}
+.tile,.pk{transform-style:preserve-3d}
+
 @media (max-width:980px){
+  .c1{left:10px}.c2{right:10px}.c3{right:10px}
   .hero .wrap,.how,.help-grid{grid-template-columns:1fr}
   .scene{max-width:520px}
   .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -229,6 +272,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   .tile p{display:none}
   .pk-list,.alone{grid-template-columns:1fr}
   .tile[aria-selected=true]::after{display:none}
+  .chip{padding:8px 12px 8px 8px;gap:8px;border-radius:14px}.chip .ci{width:32px;height:32px;border-radius:10px}.chip .ci svg{width:18px;height:18px}.chip b{font-size:16px}.chip small{font-size:12px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
@@ -267,43 +311,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
         <div><b id="goalTxt">Načítavam…</b><span id="goalSub">Môj cieľ: kúpiť všetky súčiastky do Vianoc.</span></div>
       </div>
     </div>
-    <div class="scene h-scene">
-      <svg viewBox="0 0 520 440" role="img" aria-label="Kreslený stôl s akváriom, nad ktorým rastie zelenina a svieti lampa">
-        <defs><symbol id="fish" viewBox="0 0 44 20"><path d="M2 10C8 2 22 1 32 10 22 19 8 18 2 10z" fill="#F2A922"/><path d="M8 9.5C14 7 22 7 30 10" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/><path d="M31 10l10-7v14z" fill="#F2A922"/><circle cx="8" cy="8.5" r="1.8" fill="#14284B"/></symbol></defs>
-        <!-- lampa -->
-        <path d="M400 40v60" stroke="#14284B" stroke-width="4"/><path d="M362 100h76l-14 26h-48z" fill="#14284B"/>
-        <path d="M368 128l-40 92h144l-40-92z" fill="#F2A922" opacity=".18"/>
-        <!-- rastliny -->
-        <g fill="#4FAE72">
-          <path class="sway" d="M150 180c-28-34-22-72 6-96 12 36 8 66-6 96z"/>
-          <path class="sway" d="M184 180c4-40 30-64 64-70-4 36-26 60-64 70z"/>
-          <path class="sway" d="M250 180c-12-44 6-80 38-98 10 40-4 74-38 98z"/>
-          <path class="sway" d="M300 180c-26-26-54-32-82-26 18 24 46 30 82 26z" opacity=".8"/>
-          <path class="sway" d="M340 180c2-32 22-54 52-60-2 30-20 52-52 60z"/>
-          <path class="sway" d="M370 180c-16-28-14-56 6-78 14 30 12 54-6 78z" opacity=".85"/>
-        </g>
-        <circle cx="216" cy="150" r="9" fill="#E5533D"/><circle cx="330" cy="140" r="8" fill="#E5533D"/>
-        <rect x="120" y="180" width="290" height="40" rx="8" fill="#fff" stroke="#14284B" stroke-width="3"/>
-        <g fill="#F2A922" opacity=".35"><circle cx="140" cy="200" r="7"/><circle cx="162" cy="206" r="7"/><circle cx="186" cy="198" r="7"/><circle cx="210" cy="206" r="7"/><circle cx="236" cy="199" r="7"/><circle cx="262" cy="206" r="7"/><circle cx="288" cy="198" r="7"/><circle cx="314" cy="206" r="7"/><circle cx="340" cy="199" r="7"/><circle cx="366" cy="206" r="7"/><circle cx="390" cy="200" r="7"/></g>
-        <!-- akvarium -->
-        <rect x="96" y="246" width="340" height="150" rx="12" fill="#D9F3F3" stroke="#14284B" stroke-width="3"/>
-        <path d="M98 266h336" stroke="#3CC6C9" stroke-width="3"/>
-        <path d="M98 378c60-10 120 6 180-2s110-6 156 0v16H98z" fill="#E9DDBF"/>
-        <g class="swim"><use href="#fish" x="170" y="296" width="54" height="25"/></g>
-        <g class="swim b"><use href="#fish" x="290" y="320" width="44" height="20"/></g>
-        <g class="swim c"><use href="#fish" x="220" y="346" width="40" height="18"/></g>
-        <g fill="none" stroke="#3CC6C9" stroke-width="2"><circle class="bub" cx="140" cy="372" r="5"/><circle class="bub" cx="134" cy="372" r="3"/><circle class="bub" cx="146" cy="372" r="4"/><circle class="bub" cx="140" cy="372" r="2.5"/></g>
-        <path class="flow" d="M402 380V214" stroke="#3CC6C9" stroke-width="6" fill="none"/>
-        <path class="flow down" d="M136 220V270" stroke="#3CC6C9" stroke-width="6" fill="none"/>
-        <!-- stol -->
-        <rect x="40" y="398" width="450" height="14" rx="6" fill="#14284B"/>
-        <path d="M70 412v28M460 412v28" stroke="#14284B" stroke-width="8" stroke-linecap="round"/>
-        <!-- popisky -->
-        <text x="8" y="120" font-family="Caveat,cursive" font-weight="600" font-size="26" fill="#14284B">zelenina</text>
-        <path d="M60 128c20 14 46 22 80 22" fill="none" stroke="#14284B" stroke-width="1.8" stroke-linecap="round"/>
-        <text x="448" y="300" font-family="Caveat,cursive" font-weight="600" font-size="26" fill="#14284B">rybičky</text>
-        <path d="M466 308c-10 16-40 24-70 22" fill="none" stroke="#14284B" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
+    <div class="scene h-scene" id="scene">
+      <div class="tank">
+        <div class="bed"><img src="img/zelenina.jpg" alt="Zelená listová zelenina rastie v pestovacom lôžku" width="1000" height="667"></div>
+        <div class="water" role="img" aria-label="Rybička pláva medzi vodnými rastlinami">
+          <div class="fishimg"></div><div class="caustic"></div>
+          <div class="rays" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <canvas id="bubbles" aria-hidden="true"></canvas>
+        </div>
+        <svg class="drip" viewBox="0 0 40 120" aria-hidden="true"><path class="flow down" d="M20 0V120" stroke="#3CC6C9" stroke-width="6" fill="none"/></svg>
+      </div>
+      <div class="chip c1"><span class="ci" style="background:var(--aqua-10);color:var(--aqua-d)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3a2.5 2.5 0 00-2.5 2.5v8.2a4.5 4.5 0 105 0V5.5A2.5 2.5 0 0012 3z"/><path d="M12 10v6"/></svg></span><span><b>24,6 °C</b><small>teplota vody</small></span></div>
+      <div class="chip c2"><span class="ci" style="background:#E2F3E8;color:#2F8A55"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 13C11 8 7 6 3 7c1 5 4 7 9 6zM12 11c1-6 5-8 9-8-1 6-5 8-9 8z"/></svg></span><span><b>12. deň</b><small>zelenina rastie</small></span></div>
+      <div class="chip c3"><span class="ci" style="background:var(--sun-10);color:var(--sun-d)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span><span><b>8:00</b><small>rybičky nakŕmené</small></span></div>
+      <p class="sample">ukážka – živé údaje budú od jari 2027</p>
     </div>
   </div>
 </section>
@@ -311,13 +332,13 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 <nav class="tiles-wrap gut" aria-label="Časti stránky" id="nav">
   <div class="wrap tiles" role="tablist">
     <button class="tile" role="tab" data-go="ako" aria-selected="true">
-      <span class="pic" style="background:var(--aqua-10)"><svg viewBox="0 0 120 80" aria-hidden="true"><rect x="22" y="40" width="76" height="32" rx="6" fill="#fff" stroke="#14284B" stroke-width="3"/><path d="M32 56c5-6 13-6 18 0-5 6-13 6-18 0z" fill="#F2A922"/><path d="M60 40c-4-14 2-26 12-32 4 14-2 24-12 32zM50 40c-10-8-20-8-28-4 8 6 18 8 28 4z" fill="#4FAE72"/><path d="M90 66V28" stroke="#3CC6C9" stroke-width="4" stroke-dasharray="3 6"/></svg></span>
+      <span class="pic"><img src="img/nadrz.jpg" alt="" loading="lazy"></span>
       <h3>Ako to funguje</h3><p>Kreslený nákres krok po kroku</p></button>
     <button class="tile help" role="tab" data-go="pomoc" aria-selected="false">
       <span class="pic"><svg viewBox="0 0 120 80" aria-hidden="true"><rect x="34" y="30" width="52" height="40" rx="6" fill="#F2A922"/><rect x="30" y="22" width="60" height="14" rx="4" fill="#14284B"/><path d="M60 22v48" stroke="#fff" stroke-width="5"/><path d="M60 22c-8-14-22-14-20-4 2 6 12 5 20 4zm0 0c8-14 22-14 20-4-2 6-12 5-20 4z" fill="none" stroke="#14284B" stroke-width="3"/><path d="M98 18l3 6 6 1-5 4 1 6-5-3-5 3 1-6-5-4 6-1z" fill="#3CC6C9"/></svg></span>
       <h3>Chcete mi pomôcť?</h3><p>Dobrovoľný príspevok cez QR</p></button>
     <button class="tile" role="tab" data-go="postup" aria-selected="false">
-      <span class="pic" style="background:var(--navy-10)"><svg viewBox="0 0 120 80" aria-hidden="true"><path d="M14 60h92" stroke="#D4E1E8" stroke-width="6" stroke-linecap="round"/><path d="M14 60h40" stroke="#3CC6C9" stroke-width="6" stroke-linecap="round"/><circle cx="22" cy="60" r="8" fill="#3CC6C9"/><circle cx="54" cy="60" r="8" fill="#fff" stroke="#F2A922" stroke-width="4"/><circle cx="86" cy="60" r="8" fill="#fff" stroke="#D4E1E8" stroke-width="4"/><path d="M54 48V14l22 8-22 8" fill="#F2A922"/><path d="M54 48V14" stroke="#14284B" stroke-width="3"/></svg></span>
+      <span class="pic"><img src="img/farma.jpg" alt="" loading="lazy"></span>
       <h3>Postup stavby</h3><p>Čo je hotové a čo príde</p></button>
     <button class="tile" role="tab" data-go="omne" aria-selected="false">
       <span class="pic" style="background:var(--sun-10)"><svg viewBox="0 0 120 80" aria-hidden="true"><circle cx="60" cy="30" r="14" fill="#14284B"/><path d="M34 76c4-18 14-26 26-26s22 8 26 26z" fill="#3CC6C9"/><path d="M88 22h20v14H96l-6 5v-5h-2z" fill="#fff" stroke="#14284B" stroke-width="2.5" stroke-linejoin="round"/></svg></span>
@@ -337,6 +358,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
             <title id="skT">Nákres akvária a farmy ATLAS</title>
             <desc id="skD">Hore je lôžko so zeleninou v keramzite, pod ním akvárium s rybičkami. Čerpadlo vytláča vodu hore k rastlinám a tá steká späť dole. Vedľa je počítač, kamera, kŕmidlo a vzduchovanie.</desc>
             <defs>
+              <symbol id="fish" viewBox="0 0 44 20"><path d="M2 10C8 2 22 1 32 10 22 19 8 18 2 10z" fill="#F2A922"/><path d="M8 9.5C14 7 22 7 30 10" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/><path d="M31 10l10-7v14z" fill="#F2A922"/><circle cx="8" cy="8.5" r="1.8" fill="#14284B"/></symbol>
               <pattern id="clay" width="22" height="18" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="5" fill="#F2A922" opacity=".35"/><circle cx="17" cy="13" r="5" fill="#F2A922" opacity=".25"/></pattern>
               <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1l8 4-8 4" fill="none" stroke="#14284B" stroke-width="1.6" stroke-linecap="round"/></marker>
             </defs>
@@ -398,9 +420,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
         </div>
       </div>
       <div class="alone">
-        <div><svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" rx="16" fill="#FDF0D6"/><path d="M18 14h24l-5 16H23z" fill="#F2A922"/><circle cx="27" cy="38" r="2.5" fill="#14284B"/><circle cx="33" cy="44" r="2.5" fill="#14284B"/><circle cx="29" cy="49" r="2" fill="#14284B"/></svg><h3>Nakŕmi rybičky</h3><p>Dve kŕmidlá – keď sa jedno zasekne, druhé ho zastúpi.</p></div>
-        <div><svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" rx="16" fill="#D9F3F3"/><path d="M30 12c7 10 12 16 12 22a12 12 0 01-24 0c0-6 5-12 12-22z" fill="#3CC6C9"/><path d="M24 36a6 6 0 006 6" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg><h3>Doleje vodu</h3><p>Keď sa voda vyparí, doplní ju zo zásobníka.</p></div>
-        <div><svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" rx="16" fill="#E2E8F2"/><path d="M30 12l16 6v11c0 10-7 17-16 20-9-3-16-10-16-20V18z" fill="#14284B"/><path d="M23 30l5 5 9-10" stroke="#F2A922" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Ustráži sa</h3><p>Dva počítače sa kontrolujú a kamera mi raz denne pošle fotku.</p></div>
+        <div><span class="ph"><img src="img/krmenie.jpg" alt="" loading="lazy"></span><h3>Nakŕmi rybičky</h3><p>Dve kŕmidlá – keď sa jedno zasekne, druhé ho zastúpi.</p></div>
+        <div><span class="ph"><img src="img/voda.jpg" alt="" loading="lazy"></span><h3>Doleje vodu</h3><p>Keď sa voda vyparí, doplní ju zo zásobníka.</p></div>
+        <div><span class="ph"><img src="img/arduino.jpg" alt="" loading="lazy"></span><h3>Ustráži sa</h3><p>Dva počítače sa kontrolujú a kamera mi raz denne pošle fotku.</p></div>
       </div>
     </section>
 
@@ -441,7 +463,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   </div>
 </main>
 
-<footer class="gut"><div class="wrap"><span><span data-name>ATLAS</span> · Autonomous Tank Life-Assist System · 2026</span><span>Navrhnuté s pomocou AI Claude</span></div></footer>
+<footer class="gut"><div class="wrap"><span><span data-name>ATLAS</span> · Autonomous Tank Life-Assist System · 2026</span><span>Fotky: Pexels · navrhnuté s pomocou AI Claude</span></div></footer>
 
 <script src="config.js"></script>
 <script src="polozky.js"></script>
@@ -459,10 +481,10 @@ const eur=n=>n.toLocaleString("sk-SK",{minimumFractionDigits:n%1?2:0,maximumFrac
 
 /* balicky prispevkov */
 const PK=[
-  {id:"jedlo",n:"Jedlo pre rybičky",d:"Krmivo a kŕmidlo na 3 mesiace",a:10,svg:'<rect x="30" y="18" width="40" height="52" rx="8" fill="#F2A922"/><rect x="26" y="12" width="48" height="12" rx="4" fill="#14284B"/><path d="M40 44c4-5 12-5 16 0-4 5-12 5-16 0z" fill="#fff"/><path d="M56 44l5-4v8z" fill="#fff"/>'},
-  {id:"zahradka",n:"Zelená záhradka",d:"Rastlinky, keramzit a svetlo",a:25,svg:'<path d="M32 46h36l-5 26H37z" fill="#F2A922"/><path d="M50 46c-2-16 4-26 16-32 2 16-4 26-16 32zM50 46c-10-6-20-6-26-2 6 6 16 6 26 2z" fill="#4FAE72"/><circle cx="62" cy="24" r="4" fill="#E5533D"/>'},
-  {id:"srdce",n:"Srdce akvária",d:"Čerpadlá a vzduchovanie",a:50,svg:'<path d="M50 70C28 56 20 44 20 34a14 14 0 0130-6 14 14 0 0130 6c0 10-8 22-30 36z" fill="#3CC6C9"/><path d="M36 40h8l4-8 6 16 4-8h8" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'},
-  {id:"mozog",n:"Mozog a oči",d:"Počítač, senzory a kamera",a:100,svg:'<rect x="28" y="24" width="44" height="40" rx="8" fill="#14284B"/><path d="M36 16v8M50 16v8M64 16v8M36 64v8M50 64v8M64 64v8" stroke="#14284B" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="44" r="10" fill="#3CC6C9"/><circle cx="50" cy="44" r="4" fill="#fff"/>'},
+  {id:"jedlo",img:"img/krmenie.jpg",n:"Jedlo pre rybičky",d:"Krmivo a kŕmidlo na 3 mesiace",a:10,svg:'<rect x="30" y="18" width="40" height="52" rx="8" fill="#F2A922"/><rect x="26" y="12" width="48" height="12" rx="4" fill="#14284B"/><path d="M40 44c4-5 12-5 16 0-4 5-12 5-16 0z" fill="#fff"/><path d="M56 44l5-4v8z" fill="#fff"/>'},
+  {id:"zahradka",img:"img/salat.jpg",n:"Zelená záhradka",d:"Rastlinky, keramzit a svetlo",a:25,svg:'<path d="M32 46h36l-5 26H37z" fill="#F2A922"/><path d="M50 46c-2-16 4-26 16-32 2 16-4 26-16 32zM50 46c-10-6-20-6-26-2 6 6 16 6 26 2z" fill="#4FAE72"/><circle cx="62" cy="24" r="4" fill="#E5533D"/>'},
+  {id:"srdce",img:"img/voda.jpg",n:"Srdce akvária",d:"Čerpadlá a vzduchovanie",a:50,svg:'<path d="M50 70C28 56 20 44 20 34a14 14 0 0130-6 14 14 0 0130 6c0 10-8 22-30 36z" fill="#3CC6C9"/><path d="M36 40h8l4-8 6 16 4-8h8" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'},
+  {id:"mozog",img:"img/arduino.jpg",n:"Mozog a oči",d:"Počítač, senzory a kamera",a:100,svg:'<rect x="28" y="24" width="44" height="40" rx="8" fill="#14284B"/><path d="M36 16v8M50 16v8M64 16v8M36 64v8M50 64v8M64 64v8" stroke="#14284B" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="44" r="10" fill="#3CC6C9"/><circle cx="50" cy="44" r="4" fill="#fff"/>'},
 ];
 let pick=PK[0], own=15, step=1, meno="", sprava="", rows=[];
 
@@ -500,7 +522,7 @@ function renderGoal(){
 /* ---------- pomoc: balicky + platba ---------- */
 const amount=()=>pick?pick.a:own;
 function renderPk(){
-  $("#pkList").innerHTML=PK.map(p=>`<button class="pk" role="radio" aria-checked="${pick===p}" data-pk="${p.id}"><span class="ill"><svg viewBox="0 0 100 84" aria-hidden="true">${p.svg}</svg></span><span class="row"><b>${p.n}</b><span class="amt">${p.a} €</span></span><small>${p.d}</small></button>`).join("")
+  $("#pkList").innerHTML=PK.map(p=>`<button class="pk" role="radio" aria-checked="${pick===p}" data-pk="${p.id}"><span class="ill photo"><img src="${p.img}" alt="" loading="lazy"><span class="badge"><svg viewBox="0 0 100 84" aria-hidden="true">${p.svg}</svg></span></span><span class="row"><b>${p.n}</b><span class="amt">${p.a} €</span></span><small>${p.d}</small></button>`).join("")
    +`<div class="pk own" role="radio" tabindex="0" aria-checked="${!pick}" data-pk="own"><span class="ill"><svg viewBox="0 0 100 84" aria-hidden="true"><circle cx="50" cy="42" r="28" fill="#F2A922"/><text x="50" y="52" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="30" fill="#14284B">€</text><path d="M82 18l3 6 6 1-5 4 1 6-5-3-5 3 1-6-5-4 6-1z" fill="#3CC6C9"/></svg></span><span class="row"><b>Vlastná suma</b><span class="amt"><input id="ownIn" type="number" inputmode="decimal" min="1" max="2000" step="1" value="${own}" aria-label="Vlastná suma v eurách"> €</span></span><small>Toľko, koľko chcete</small></div>`;
 }
 document.addEventListener("click",e=>{
@@ -608,6 +630,40 @@ if(!REDUCE&&window.gsap){
     .from(".h-scene",{y:40,opacity:0,duration:1},.15)
     .from(".tile",{y:40,opacity:0,duration:.7,stagger:.08},.4);
 }
+
+/* ---------- hero: bublinky, paralax, naklapanie kariet ---------- */
+(function bubbles(){
+  if(REDUCE)return;
+  const cv=$("#bubbles"),cx=cv.getContext("2d");let W,Hh,B=[];
+  const size=()=>{W=cv.width=cv.offsetWidth*devicePixelRatio;Hh=cv.height=cv.offsetHeight*devicePixelRatio};size();addEventListener("resize",size);
+  for(let i=0;i<34;i++)B.push({x:Math.random(),y:Math.random(),r:.8+Math.random()*2.8,s:.0008+Math.random()*.0018,w:Math.random()*6});
+  (function f(t){cx.clearRect(0,0,W,Hh);B.forEach(b=>{b.y-=b.s;if(b.y<-.05){b.y=1.05;b.x=Math.random()}
+    const x=(b.x+Math.sin(t/1400+b.w)*.01)*W,y=b.y*Hh,r=b.r*devicePixelRatio;
+    cx.beginPath();cx.arc(x,y,r,0,7);cx.strokeStyle="rgba(210,245,248,.55)";cx.lineWidth=devicePixelRatio*.9;cx.stroke();
+    cx.beginPath();cx.arc(x-r*.35,y-r*.35,r*.3,0,7);cx.fillStyle="rgba(255,255,255,.6)";cx.fill()});
+    if(!document.hidden)requestAnimationFrame(f);else setTimeout(()=>requestAnimationFrame(f),500)})(0);
+})();
+if(!REDUCE&&matchMedia("(pointer:fine)").matches&&window.gsap){
+  const tank=$(".tank"),fish=$(".fishimg"),bed=$(".bed img");
+  addEventListener("pointermove",e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;
+    gsap.to(tank,{rotateY:x*6,rotateX:-y*5,duration:1.2,ease:"power3.out"});
+    gsap.to(fish,{x:x*-22,y:y*-14,duration:1.4,ease:"power3.out"});
+    gsap.to(bed,{x:x*-12,y:y*-8,duration:1.4,ease:"power3.out"});
+    gsap.to(".chip",{x:x*18,y:y*12,duration:1.6,ease:"power3.out",stagger:.05})},{passive:true});
+  document.querySelectorAll(".tile,.pk").forEach(el=>{
+    el.addEventListener("pointermove",e=>{const r=el.getBoundingClientRect();gsap.to(el,{rotateY:((e.clientX-r.left)/r.width-.5)*8,rotateX:-((e.clientY-r.top)/r.height-.5)*8,transformPerspective:800,duration:.5,ease:"power2.out"})});
+    el.addEventListener("pointerleave",()=>gsap.to(el,{rotateX:0,rotateY:0,duration:.7,ease:"power3.out"}));
+  });
+}
+if(!REDUCE&&window.gsap){
+  gsap.from(".chip",{scale:.6,opacity:0,y:20,duration:.9,stagger:.15,delay:.9,ease:"back.out(1.8)"});
+  gsap.from(".tank",{clipPath:"inset(100% 0 0 0 round 34px)",duration:1.4,ease:"power4.out",delay:.1});
+}
+/* pocitadlo sumy (plynuly nabeh) */
+const _rg=renderGoal;
+renderGoal=function(){_rg();if(REDUCE||!window.gsap||renderGoal.done)return;renderGoal.done=1;
+  const got=Math.round(rows.reduce((s,r)=>s+(+r.suma||0),0)),o={v:0},el=$("#goalTxt");
+  gsap.to(o,{v:got,duration:1.6,ease:"power2.out",onUpdate:()=>el.textContent=`${eur(Math.round(o.v))} z ${eur(GOAL)}`})};
 
 /* ---------- start ---------- */
 renderPk();renderPay();
