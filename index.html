@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ATLAS – Malá ryba. Veľký ekosystém.</title>
+<meta name="description" content="ATLAS – Autonomous Tank Life-Assist System. Stolové akvárium, v ktorom si ryby a rastliny pomáhajú a ktoré sa 3 mesiace postará samo.">
+<meta property="og:title" content="ATLAS – Malá ryba. Veľký ekosystém.">
+<meta property="og:description" content="Môj projekt: akvárium, ktoré sa 3 mesiace postará samo. Pomôžte mi ho postaviť.">
+<meta property="og:image" content="https://flochmaros.github.io/atlas/hero.jpg">
+<meta name="theme-color" content="#061A22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: full-screen photo hero (plants left, 3 glass cards in the right third, headline bottom-left), then dark sections: project, wishlist, results, contact. Cart drawer slides in from the right. */
+:root{
+  --abyss:#061A22; --deep:#0A2530; --glass:rgba(18,52,64,.42); --glass-line:rgba(160,220,230,.22);
+  --text:#EAF4F4; --soft:#A9C6CA; --dim:#6F9298;
+  --orange:#F28C28; --orange-2:#FFB45C; --leaf:#5FD08A; --cyan:#4FD1E0;
+  --display:'Outfit',Arial,sans-serif; --body:'Inter',Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--abyss)}
+body{margin:0;background:var(--abyss);color:var(--text);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;text-wrap:balance}
+p{margin:0}
+.gut{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:6px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:-3%;background:url(hero.jpg) 30% 50%/cover no-repeat;z-index:-3;
+  animation:kb 3.2s cubic-bezier(.2,.7,.2,1) both;transform-origin:30% 60%;will-change:transform}
+@keyframes kb{from{transform:scale(1.12);filter:saturate(.6) brightness(.6)}to{transform:scale(1);filter:none}}
+.hero-shade{position:absolute;inset:0;z-index:-2;background:
+  linear-gradient(90deg,rgba(6,26,34,.05) 0%,rgba(6,26,34,.25) 38%,rgba(6,26,34,.82) 64%,rgba(6,26,34,.94) 100%),
+  linear-gradient(0deg,rgba(6,26,34,.92) 0%,rgba(6,26,34,0) 42%),
+  linear-gradient(180deg,rgba(6,26,34,.55) 0%,rgba(6,26,34,0) 22%)}
+.rays{position:absolute;inset:-20% -10% 0 30%;z-index:-1;pointer-events:none;mix-blend-mode:screen;opacity:.55}
+.rays i{position:absolute;top:-10%;width:9%;height:120%;background:linear-gradient(180deg,rgba(150,230,240,.32),rgba(150,230,240,0) 75%);
+  transform-origin:top center;filter:blur(14px);animation:ray 7s ease-in-out infinite alternate}
+.rays i:nth-child(1){left:38%;transform:rotate(16deg);animation-delay:-1s}
+.rays i:nth-child(2){left:50%;width:6%;transform:rotate(12deg);animation-delay:-3s}
+.rays i:nth-child(3){left:60%;width:11%;transform:rotate(19deg);animation-delay:-5s}
+.rays i:nth-child(4){left:72%;width:5%;transform:rotate(14deg);animation-delay:-2s}
+@keyframes ray{from{opacity:.35}to{opacity:1}}
+#bubbles{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.arc{position:absolute;border:1.5px solid var(--orange);border-radius:50%;opacity:.55;pointer-events:none;z-index:0}
+.arc.tl{width:420px;height:420px;left:-250px;top:-250px}
+.arc.br{width:520px;height:520px;right:-300px;bottom:-330px}
+
+.nav{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding-top:calc(26px + env(safe-area-inset-top,0px));z-index:5;animation:fadeD .9s .4s both}
+.brand{font-family:var(--display);font-weight:700;letter-spacing:.32em;font-size:15px;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand b{width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 14px var(--orange)}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:clamp(18px,3vw,44px)}
+.nav a.l{font-family:var(--display);font-weight:500;letter-spacing:.12em;font-size:15px;text-decoration:none;position:relative;padding:6px 0}
+.nav a.l::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--orange);transition:right .3s}
+.nav a.l:hover::after{right:0}
+.cartbtn{position:relative;background:none;border:0;cursor:pointer;padding:6px;display:grid}
+.cartbtn svg{width:40px;height:34px}
+.badge{position:absolute;top:-6px;right:-8px;min-width:22px;height:22px;border-radius:11px;background:var(--orange);color:#1B0E02;
+  font:600 13px/22px var(--display);text-align:center;padding:0 6px;transition:transform .25s}
+.badge.pop{animation:pop .45s}
+@keyframes pop{40%{transform:scale(1.45)}}
+
+.hero-in{position:relative;z-index:2;min-height:100svh;display:grid;grid-template-columns:1fr minmax(260px,330px);gap:24px;
+  align-items:center;padding-top:110px;padding-bottom:110px;max-width:1500px;margin:0 auto}
+.cards{grid-column:2;display:flex;flex-direction:column;gap:22px}
+.card{position:relative;display:flex;flex-direction:column;gap:22px;padding:30px 30px 26px;border-radius:20px;text-decoration:none;
+  background:linear-gradient(160deg,rgba(40,90,105,.38),rgba(8,30,40,.55));border:1px solid var(--glass-line);
+  backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3);
+  box-shadow:0 20px 50px -20px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.08);
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s,background .35s;
+  animation:cardIn .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.9s + var(--i)*.15s)}
+@keyframes cardIn{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:none}}
+@keyframes cardInM{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.card:hover{transform:translateX(-8px);border-color:rgba(242,140,40,.6);background:linear-gradient(160deg,rgba(50,105,120,.5),rgba(8,30,40,.6))}
+.card svg.ic{width:52px;height:52px;color:var(--orange)}
+.card .row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.card .t{font-family:var(--display);font-weight:500;letter-spacing:.1em;font-size:16px;text-transform:uppercase;line-height:1.35}
+.card .ar{width:22px;height:22px;color:var(--orange);transition:transform .3s;flex:none}
+.card:hover .ar{transform:translateX(5px)}
+.card .bar{position:absolute;left:30px;bottom:0;height:3px;width:80px;border-radius:3px;background:linear-gradient(90deg,var(--orange),rgba(242,140,40,0));transition:width .45s}
+.card:hover .bar{width:calc(100% - 60px)}
+
+.headline{position:absolute;left:0;bottom:clamp(90px,13vh,150px);z-index:2;max-width:min(1000px,66vw);animation:fadeU 1.1s .5s both}
+.kicker{font-family:var(--display);font-weight:600;letter-spacing:.42em;font-size:14px;color:var(--orange);display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.kicker span{color:var(--soft);font-weight:400;letter-spacing:.12em}
+.headline h1{font-weight:500;font-size:clamp(44px,6.2vw,94px);letter-spacing:-.02em;text-shadow:0 4px 30px rgba(0,0,0,.4)}
+.headline h1 em{font-style:normal;font-weight:700;color:var(--orange);background:linear-gradient(90deg,var(--orange),var(--orange-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.headline .u{display:block;width:150px;height:4px;border-radius:4px;background:var(--orange);margin-top:22px;transform-origin:left;animation:grow 1s 1.3s both}
+@keyframes grow{from{transform:scaleX(0)}}
+.down{position:absolute;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:3;width:38px;height:62px;border:1.5px solid rgba(234,244,244,.7);border-radius:20px;display:grid;place-items:center;text-decoration:none}
+.down svg{width:18px;height:18px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(7px)}}
+@keyframes fadeU{from{opacity:0;transform:translateY(30px)}}
+@keyframes fadeD{from{opacity:0;transform:translateY(-16px)}}
+
+@media (max-width:860px){
+  .hero-in{grid-template-columns:1fr;align-items:end;padding-top:100px;padding-bottom:110px}
+  .cards{grid-column:1;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-20px;padding:4px 20px 8px;gap:14px}
+  .card{min-width:230px;scroll-snap-align:start;padding:22px 22px 20px;gap:16px;animation-name:cardInM}
+  .card:hover{transform:none}
+  .kicker{flex-direction:column;align-items:flex-start;gap:4px;letter-spacing:.3em}
+  .headline{position:relative;bottom:auto;max-width:none;margin-bottom:26px}
+  .hero-in{display:flex;flex-direction:column;justify-content:flex-end}
+  .hero-shade{background:linear-gradient(0deg,rgba(6,26,34,.97) 0%,rgba(6,26,34,.55) 55%,rgba(6,26,34,.35) 100%)}
+  .nav ul{gap:16px} .nav a.l{font-size:13px} .brand{display:none}
+  .down{display:none}
+}
+
+/* ---------- SECTIONS ---------- */
+.sec{max-width:1180px;margin:0 auto;padding-top:120px;padding-bottom:40px}
+.eyebrow{font-family:var(--display);font-weight:600;letter-spacing:.32em;font-size:13px;color:var(--orange);text-transform:uppercase}
+.sec h2{font-weight:500;font-size:clamp(34px,5vw,60px);letter-spacing:-.015em;margin:14px 0 18px}
+.sec h2 em{font-style:normal;color:var(--orange);font-weight:700}
+.lead{color:var(--soft);font-size:18px;max-width:62ch}
+.rv{transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.js .rv{opacity:0;transform:translateY(40px)}
+.js .rv.in{opacity:1;transform:none}
+
+.cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;counter-reset:s}
+.step{position:relative;padding:28px 24px;border-radius:18px;background:var(--glass);border:1px solid var(--glass-line)}
+.step .n{font-family:var(--display);font-size:56px;font-weight:300;line-height:1;color:transparent;-webkit-text-stroke:1.2px var(--orange)}
+.step h3{font-size:22px;margin:14px 0 8px;font-weight:600}
+.step p{color:var(--soft);font-size:15px}
+.step:not(:last-child)::after{content:"";position:absolute;top:52px;right:-14px;width:10px;height:10px;border-top:2px solid var(--orange);border-right:2px solid var(--orange);transform:rotate(45deg);opacity:.7}
+.guards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+.guard{padding:26px 24px;border-radius:18px;background:linear-gradient(180deg,rgba(79,209,224,.09),rgba(79,209,224,0));border:1px solid var(--glass-line)}
+.guard h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.guard p{color:var(--soft);font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}
+.stat{padding:22px 24px;border-left:2px solid var(--orange)}
+.stat b{display:block;font-family:var(--display);font-size:44px;font-weight:600;line-height:1}
+.stat span{color:var(--soft);font-size:14px}
+@media (max-width:860px){.cycle,.stats{grid-template-columns:1fr 1fr}.guards{grid-template-columns:1fr}.step:not(:last-child)::after{display:none}}
+
+/* wishlist */
+.fund{margin-top:40px;padding:26px 28px;border-radius:20px;background:var(--glass);border:1px solid var(--glass-line);display:flex;flex-direction:column;gap:14px}
+.fund .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:baseline;font-variant-numeric:tabular-nums}
+.fund .row b{font-family:var(--display);font-size:30px;font-weight:600}
+.track{height:10px;border-radius:10px;background:rgba(160,220,230,.12);overflow:hidden}
+.fill{height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--leaf),var(--cyan),var(--orange));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.how{display:flex;gap:26px;flex-wrap:wrap;color:var(--soft);font-size:15px;margin-top:26px}
+.how span{display:flex;align-items:center;gap:10px}
+.how i{font-style:normal;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--orange);color:var(--orange);font:600 13px var(--display)}
+.demo{margin-top:20px;padding:12px 16px;border-radius:12px;background:rgba(242,140,40,.12);color:var(--orange-2);font-size:14px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:34px 0 8px;align-items:center}
+.fb{background:transparent;border:1px solid var(--glass-line);border-radius:999px;padding:8px 16px;cursor:pointer;color:var(--soft);font-size:14px;transition:all .25s}
+.fb:hover{color:var(--text);border-color:var(--soft)}
+.fb[aria-pressed="true"]{background:var(--text);color:var(--abyss);border-color:var(--text)}
+.hideT{margin-left:auto;color:var(--soft);font-size:14px;display:flex;gap:8px;align-items:center;cursor:pointer}
+.hideT input{accent-color:var(--orange);width:16px;height:16px}
+.cat{font-family:var(--display);font-weight:500;font-size:24px;margin:34px 0 14px;display:flex;gap:12px;align-items:baseline}
+.cat small{font-family:var(--body);font-size:14px;color:var(--dim)}
+.items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.items{grid-template-columns:1fr}}
+.item{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:start;padding:18px 18px 18px 16px;border-radius:16px;
+  background:rgba(14,44,54,.55);border:1px solid var(--glass-line);cursor:pointer;transition:transform .25s,border-color .25s,background .25s}
+.item:hover{border-color:rgba(242,140,40,.55);transform:translateY(-2px)}
+.item.sel{border-color:var(--orange);background:linear-gradient(160deg,rgba(242,140,40,.16),rgba(14,44,54,.6))}
+.item.taken{cursor:default;opacity:.5;transform:none}
+.item.taken:hover{border-color:var(--glass-line)}
+.chk{width:24px;height:24px;border-radius:8px;border:1.5px solid var(--soft);display:grid;place-items:center;margin-top:2px;transition:all .2s}
+.item.sel .chk{background:var(--orange);border-color:var(--orange)}
+.item.sel .chk::after{content:"";width:10px;height:6px;border-left:2.5px solid #1B0E02;border-bottom:2.5px solid #1B0E02;transform:rotate(-45deg) translate(1px,-1px)}
+.item.taken .chk{border-style:dashed;border-color:var(--dim)}
+.iname{font-weight:600;font-size:15.5px}
+.idesc{color:var(--soft);font-size:14px;margin-top:3px}
+.imeta{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:8px;font-size:12.5px;color:var(--dim);align-items:center}
+.imeta a{color:var(--cyan);text-decoration:none}.imeta a:hover{text-decoration:underline}
+.pill{font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:6px;background:rgba(95,208,138,.14);color:var(--leaf)}
+.pill.later{background:rgba(160,220,230,.1);color:var(--dim)}
+.who{color:var(--leaf);font-weight:600}
+.price{font-family:var(--display);font-weight:600;font-size:20px;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+.price small{display:block;font:500 11px var(--body);color:var(--dim);letter-spacing:.03em}
+.note{margin-top:26px;color:var(--dim);font-size:14px}
+
+/* results */
+.road{margin-top:44px;display:grid;grid-template-columns:repeat(7,1fr);gap:0;position:relative}
+.road::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:rgba(160,220,230,.15)}
+.road .pr{position:absolute;left:0;top:15px;height:2px;background:linear-gradient(90deg,var(--leaf),var(--orange));width:0;transition:width 1.4s .2s}
+.ms{position:relative;padding-right:10px}
+.ms .dot{width:32px;height:32px;border-radius:50%;border:2px solid rgba(160,220,230,.3);background:var(--abyss);display:grid;place-items:center;position:relative;z-index:1}
+.ms.done .dot{border-color:var(--leaf);background:var(--leaf)}
+.ms.done .dot::after{content:"";width:10px;height:6px;border-left:2.5px solid var(--abyss);border-bottom:2.5px solid var(--abyss);transform:rotate(-45deg) translate(1px,-1px)}
+.ms.now .dot{border-color:var(--orange);box-shadow:0 0 0 6px rgba(242,140,40,.18);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 12px rgba(242,140,40,0)}}
+.ms b{display:block;font-family:var(--display);font-weight:600;margin-top:14px;font-size:16px}
+.ms span{color:var(--soft);font-size:13px}
+@media (max-width:860px){.road{grid-template-columns:1fr;gap:18px}.road::before,.road .pr{display:none}.ms{display:grid;grid-template-columns:32px 1fr;gap:4px 14px}.ms b{margin:4px 0 0}.ms span{grid-column:2}}
+.live{margin-top:34px;padding:24px 26px;border-radius:18px;border:1px dashed var(--glass-line);color:var(--soft);display:flex;gap:16px;align-items:center}
+.live i{width:12px;height:12px;border-radius:50%;background:var(--orange);flex:none;animation:pulse 2s infinite}
+
+/* contact */
+.contact{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:28px}
+.mail{font-family:var(--display);font-size:clamp(20px,3.4vw,34px);font-weight:500;text-decoration:none;border-bottom:2px solid var(--orange);padding-bottom:4px;word-break:break-all}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:12px;padding:13px 20px;font-weight:600;cursor:pointer;text-decoration:none;border:1.5px solid var(--orange);transition:all .25s}
+.btn.pri{background:var(--orange);color:#1B0E02}.btn.pri:hover{background:var(--orange-2);border-color:var(--orange-2)}
+.btn.gh{background:transparent;color:var(--orange)}.btn.gh:hover{background:rgba(242,140,40,.1)}
+.btn:disabled{opacity:.5;cursor:default}
+footer{max-width:1180px;margin:0 auto;padding-top:80px;padding-bottom:calc(40px + env(safe-area-inset-bottom,0px));color:var(--dim);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(2,10,14,.6);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .35s;z-index:20}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:21;background:linear-gradient(180deg,#0C2C38,#071E27);border-left:1px solid var(--glass-line);
+  transform:translateX(105%);transition:transform .45s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;
+  padding:calc(24px + env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-right,0px)) calc(24px + env(safe-area-inset-bottom,0px)) 24px}
+.drawer.open{transform:none}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.dh h2{font-size:28px;font-weight:500}
+.x{background:none;border:1px solid var(--glass-line);border-radius:10px;width:40px;height:40px;cursor:pointer;display:grid;place-items:center}
+.dbody{flex:1;overflow:auto;display:flex;flex-direction:column;gap:14px;padding-right:4px}
+.dl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.dl li{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;padding:10px 12px;border-radius:10px;background:rgba(160,220,230,.06)}
+.dl li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--soft)}
+.tot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--glass-line);padding-top:14px}
+.tot b{font-family:var(--display);font-size:32px;font-weight:600;color:var(--orange)}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-weight:600;font-size:14px}
+.fld small{color:var(--dim);font-size:12.5px}
+input,textarea{font:inherit;font-size:16px;color:var(--text);background:rgba(160,220,230,.07);border:1px solid var(--glass-line);border-radius:12px;padding:11px 14px;width:100%}
+input:focus,textarea:focus{outline:none;border-color:var(--orange)}
+.err{color:var(--orange-2);font-weight:600;font-size:14px}
+.empty{color:var(--soft);text-align:center;margin:auto 0;display:flex;flex-direction:column;gap:14px;align-items:center}
+.thanks .big{display:block;font-family:var(--display);font-size:46px;font-weight:600;color:var(--orange);margin:8px 0 12px}
+.sticky{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:15;display:flex;gap:16px;align-items:center;
+  padding:10px 10px 10px 22px;border-radius:16px;background:rgba(10,37,48,.92);border:1px solid var(--glass-line);backdrop-filter:blur(12px);box-shadow:0 20px 40px -10px rgba(0,0,0,.6);transition:transform .45s cubic-bezier(.2,.8,.2,1);white-space:nowrap}
+.sticky.show{transform:translate(-50%,0)}
+.sticky b{font-family:var(--display);font-size:20px;color:var(--orange)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+}
+</style>
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="hero-bg" role="img" aria-label="Kŕdeľ neóniek medzi vodnými rastlinami"></div>
+  <div class="hero-shade"></div>
+  <div class="rays" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <canvas id="bubbles" aria-hidden="true"></canvas>
+  <span class="arc tl" aria-hidden="true"></span><span class="arc br" aria-hidden="true"></span>
+
+  <nav class="nav gut" aria-label="Hlavné menu">
+    <a class="brand" href="#top"><b></b><span data-name>ATLAS</span></a>
+    <ul>
+      <li><a class="l" href="#projekt">PROJEKT</a></li>
+      <li><a class="l" href="#kontakt">KONTAKT</a></li>
+      <li><button class="cartbtn" type="button" id="cartBtn" aria-label="Otvoriť košík">
+        <svg viewBox="0 0 40 34" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h5l4.5 19h19l4-14H9.5"/><circle cx="14" cy="29" r="2.6"/><circle cx="28" cy="29" r="2.6"/></svg>
+        <span class="badge" id="badge">0</span></button></li>
+    </ul>
+  </nav>
+
+  <div class="hero-in gut">
+    <div class="headline gut">
+      <p class="kicker"><span data-name>ATLAS</span><span id="sub">Autonomous Tank Life-Assist System</span></p>
+      <h1>Malá ryba.<br>Veľký <em>ekosystém.</em></h1>
+      <span class="u" aria-hidden="true"></span>
+    </div>
+    <div class="cards">
+      <a class="card" href="#projekt" style="--i:0">
+        <svg class="ic" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M26 46V26"/><path d="M26 30c-2-9-10-14-20-13 1 10 8 15 20 13z"/><path d="M26 26c1-11 9-19 22-19-1 13-9 20-22 19z"/></svg>
+        <div class="row"><span class="t">O projekte</span><svg class="ar" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11h15M12 5l6 6-6 6"/></svg></div>
+        <span class="bar"></span></a>
+      <a class="card" href="#kosik" style="--i:1">
+        <svg class="ic" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h7l5 24h24l5-17H13"/><circle cx="19" cy="41" r="3.2"/><circle cx="36" cy="41" r="3.2"/></svg>
+        <div class="row"><span class="t">Nákupný<br>košík</span><svg class="ar" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11h15M12 5l6 6-6 6"/></svg></div>
+        <span class="bar"></span></a>
+      <a class="card" href="#vysledky" style="--i:2">
+        <svg class="ic" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 44V34M18 44V28M28 44V30M38 44V20"/><path d="M8 24l10-8 10 4 16-14"/><path d="M36 6h8v8"/></svg>
+        <div class="row"><span class="t">Výsledky</span><svg class="ar" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 11h15M12 5l6 6-6 6"/></svg></div>
+        <span class="bar"></span></a>
+    </div>
+  </div>
+  <a class="down" href="#projekt" aria-label="Posunúť nižšie"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7l5 5 5-5"/></svg></a>
+</header>
+
+<main>
+  <section class="sec gut" id="projekt">
+    <p class="eyebrow rv">O projekte</p>
+    <h2 class="rv">Ryby kŕmia rastliny.<br>Rastliny čistia vodu <em>rybám.</em></h2>
+    <p class="lead rv">ATLAS je stolové akvárium s pestovacím lôžkom nad ním. Celý systém – elektroniku, program, 3D tlačené diely aj túto stránku – navrhujem a staviam sám. Cieľ je jednoduchý a zároveň poriadne ťažký: <b>tri mesiace bez toho, aby sa ho dotkol človek.</b></p>
+    <div class="cycle">
+      <div class="step rv"><span class="n">01</span><h3>Ryby</h3><p>Zjedia krmivo a do vody vylúčia amoniak, ktorý by ich vo väčšom množstve otrávil.</p></div>
+      <div class="step rv"><span class="n">02</span><h3>Baktérie</h3><p>Žijú v keramzite a premenia amoniak na dusičnany – prírodné hnojivo.</p></div>
+      <div class="step rv"><span class="n">03</span><h3>Rastliny</h3><p>Hnojivo vypijú koreňmi a tým vodu vyčistia.</p></div>
+      <div class="step rv"><span class="n">04</span><h3>Čistá voda</h3><p>Steká späť k rybám a kolobeh ide odznova.</p></div>
+    </div>
+    <div class="guards">
+      <div class="guard rv"><h3>Dva mozgy</h3><p>Hlavný počítač ESP32 riadi všetko. Keď zamrzne, záložné Arduino to do minúty spozná a prevezme dôležité veci.</p></div>
+      <div class="guard rv"><h3>Všetko dvakrát</h3><p>Dve čerpadlá, dve kŕmidlá, vzduchovanie s vlastnou batériou a vanička, ktorá zachytí každú kvapku.</p></div>
+      <div class="guard rv"><h3>Oči na diaľku</h3><p>Kamera, senzory a umelá inteligencia, ktorá raz denne skontroluje, či je všetko v poriadku.</p></div>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><b>90</b><span>dní bez dotyku človeka</span></div>
+      <div class="stat rv"><b>54 l</b><span>akvárium + lôžko s rastlinami</span></div>
+      <div class="stat rv"><b>12</b><span>senzorov a snímačov</span></div>
+      <div class="stat rv"><b>2</b><span>mozgy, ktoré sa strážia</span></div>
+    </div>
+  </section>
+
+  <section class="sec gut" id="kosik">
+    <p class="eyebrow rv">Nákupný košík</p>
+    <h2 class="rv">Pomôžte mi postaviť <em>ATLAS</em></h2>
+    <p class="lead rv">Namiesto jedného veľkého darčeka si môžete vybrať jednu alebo viac súčiastok. Čo niekto zarezervuje, ostatní uvidia ako zabrané – nič sa nekúpi dvakrát.</p>
+    <div class="how rv"><span><i>1</i>Zakliknite súčiastky</span><span><i>2</i>V košíku napíšte meno</span><span><i>3</i>Darujte sumu alebo vec</span></div>
+    <p class="demo" id="demo" hidden>Ukážkový režim – rezervácie sa zatiaľ ukladajú len v tomto prehliadači.</p>
+    <div class="fund rv" aria-live="polite">
+      <div class="row"><span id="fundTxt">Načítavam…</span><b id="fundSum"></b></div>
+      <div class="track"><div class="fill" id="fill"></div></div>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div id="list"></div>
+    <p class="note">Ceny sú z e‑shopov, ktoré dovážajú na Slovensko. Pri položkách označených ≈ ide o odhad. Položky „neskôr“ (napríklad rybky) budem kupovať až na jar.</p>
+  </section>
+
+  <section class="sec gut" id="vysledky">
+    <p class="eyebrow rv">Výsledky</p>
+    <h2 class="rv">Kde je projekt <em>práve teraz</em></h2>
+    <p class="lead rv">Každý krok tu priebežne zaznamenám. Keď ATLAS ožije, uvidíte tu živé dáta zo senzorov a fotky z kamery.</p>
+    <div class="road rv" id="road"><span class="pr" id="roadPr"></span></div>
+    <div class="live rv"><i></i><span>Živé dáta – teplota vody, hladina, kŕmenie a denná kontrola AI – sa tu objavia na jar 2027.</span></div>
+  </section>
+
+  <section class="sec gut" id="kontakt">
+    <p class="eyebrow rv">Kontakt</p>
+    <h2 class="rv">Napíšte mi</h2>
+    <p class="lead rv">Otázky, nápady alebo chcete vidieť, ako to celé funguje? Ozvite sa.</p>
+    <div class="contact rv"><a class="mail" id="mail" href="#">e‑mail</a><button class="btn gh" type="button" id="copyMail">Kopírovať adresu</button></div>
+  </section>
+</main>
+
+<footer class="gut"><span><span data-name>ATLAS</span> · Autonomous Tank Life-Assist System · 2026</span><span>Fotka: Pexels · navrhnuté s pomocou AI Claude</span></footer>
+
+<div class="sticky" id="sticky"><span><span id="stN">0 položiek</span> · <b id="stSum">0 €</b></span><button class="btn pri" type="button" id="stOpen">Otvoriť košík</button></div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Košík" aria-hidden="true">
+  <div class="dh"><h2 id="dTitle">Košík</h2><button class="x" type="button" id="dClose" aria-label="Zavrieť košík"><svg width="16" height="16" viewBox="0 0 16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+  <div class="dbody" id="dBody"></div>
+</aside>
+
+<script src="config.js"></script>
+<script src="polozky.js"></script>
+<script>
+const C=window.ATLAS_CONFIG||{}, P=window.POLOZKY||[];
+const DEMO=!C.SUPABASE_URL||!C.SUPABASE_KEY;
+const CATS=[...new Set(P.map(p=>p.kategoria))];
+let taken={}, sel=new Set(), cat="Všetko", hideTaken=false, loaded=false;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const eur=n=>n.toLocaleString("sk-SK",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";
+const pl=n=>n===1?"1 položka":n>1&&n<5?n+" položky":n+" položiek";
+
+/* názov, e-mail */
+document.querySelectorAll("[data-name]").forEach(e=>e.textContent=C.NAZOV||"ATLAS");
+if(C.PODNAZOV)$("#sub").textContent=C.PODNAZOV;
+if(C.EMAIL){const m=$("#mail");m.textContent=C.EMAIL;m.href="mailto:"+C.EMAIL;}
+$("#copyMail").onclick=async e=>{try{await navigator.clipboard.writeText(C.EMAIL);e.target.textContent="Skopírované ✓"}catch(_){const r=document.createRange();r.selectNodeContents($("#mail"));getSelection().removeAllRanges();getSelection().addRange(r);e.target.textContent="Označené – Ctrl+C"}};
+$("#demo").hidden=!DEMO;
+
+/* ---------- úložisko ---------- */
+const H=()=>{const h={apikey:C.SUPABASE_KEY,"Content-Type":"application/json"};if(C.SUPABASE_KEY.startsWith("eyJ"))h.Authorization="Bearer "+C.SUPABASE_KEY;return h};
+async function load(){
+  if(DEMO){try{return JSON.parse(localStorage.getItem("atlas-demo")||"[]")}catch(_){return[]}}
+  const r=await fetch(`${C.SUPABASE_URL}/rest/v1/rezervacie?select=polozka,meno`,{headers:H(),cache:"no-store"});
+  if(!r.ok)throw new Error(r.status);return r.json();
+}
+async function reserve(rows){
+  if(DEMO){const cur=await load();if(rows.some(r=>cur.some(c=>c.polozka===r.polozka)))return{conflict:true};try{localStorage.setItem("atlas-demo",JSON.stringify(cur.concat(rows)))}catch(_){}return{ok:true}}
+  const r=await fetch(`${C.SUPABASE_URL}/rest/v1/rezervacie`,{method:"POST",headers:{...H(),Prefer:"return=minimal"},body:JSON.stringify(rows)});
+  if(r.status===409)return{conflict:true};if(!r.ok)return{error:r.status};return{ok:true};
+}
+async function refresh(){
+  try{const rows=await load();taken=Object.fromEntries(rows.map(r=>[r.polozka,r.meno]));loaded=true;
+    let lost=false;sel.forEach(id=>{if(taken[id]){sel.delete(id);lost=true}});renderAll();return lost}
+  catch(_){$("#fundTxt").textContent="Rezervácie sa nepodarilo načítať – obnovte stránku.";return false}
+}
+
+/* ---------- zoznam ---------- */
+function renderAll(){renderFund();renderList();renderCart();renderRoad()}
+function renderFund(){
+  const total=P.reduce((s,p)=>s+p.cena,0), done=P.filter(p=>taken[p.id]).reduce((s,p)=>s+p.cena,0), n=P.filter(p=>taken[p.id]).length;
+  $("#fundTxt").innerHTML=`Zarezervované <b style="font-size:inherit;font-family:inherit">${n}</b> z ${P.length} súčiastok`;
+  $("#fundSum").textContent=`${eur(done)} / ${eur(total)}`;
+  $("#fill").style.width=(100*done/total)+"%";
+}
+function renderList(){
+  $("#filters").innerHTML=["Všetko",...CATS].map(c=>`<button type="button" class="fb" aria-pressed="${c===cat}" data-cat="${esc(c)}">${esc(c)}</button>`).join("")
+    +`<label class="hideT"><input type="checkbox" id="hideT" ${hideTaken?"checked":""}>skryť zarezervované</label>`;
+  $("#list").innerHTML=CATS.filter(c=>cat==="Všetko"||c===cat).map(c=>{
+    const all=P.filter(p=>p.kategoria===c), it=all.filter(p=>!(hideTaken&&taken[p.id]));
+    if(!it.length)return"";
+    const sum=all.reduce((s,p)=>s+p.cena,0);
+    return `<h3 class="cat">${esc(c)}<small>${all.length} ks · ${eur(sum)}</small></h3><div class="items">${it.map(p=>{
+      const t=taken[p.id], s=sel.has(p.id);
+      return `<div class="item${s?" sel":""}${t?" taken":""}" role="checkbox" aria-checked="${s}" aria-disabled="${!!t}" tabindex="${t?-1:0}" data-id="${esc(p.id)}">
+        <span class="chk" aria-hidden="true"></span>
+        <div><div class="iname">${esc(p.nazov)}</div><div class="idesc">${esc(p.popis)}</div>
+        <div class="imeta">${p.ks>1?`<span>${p.ks} ks</span>`:""}<span class="pill${p.priorita==="neskôr"?" later":""}">${esc(p.priorita)}</span>${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener" data-link>${esc(p.obchod)} ↗</a>`:""}${t?`<span class="who">✓ ${esc(t)}</span>`:""}</div></div>
+        <div class="price">${p.odhad?"≈ ":""}${eur(p.cena)}${p.odhad?"<small>odhad</small>":""}</div></div>`}).join("")}</div>`}).join("");
+}
+function toggle(id){if(taken[id])return;sel.has(id)?sel.delete(id):sel.add(id);renderList();renderCart();
+  const b=$("#badge");b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop");
+  const el=document.querySelector(`.item[data-id="${CSS.escape(id)}"]`);if(el)el.focus({preventScroll:true})}
+document.addEventListener("click",e=>{
+  if(e.target.closest("[data-link]"))return;
+  const f=e.target.closest(".fb");if(f){cat=f.dataset.cat;renderList();return}
+  const it=e.target.closest(".item");if(it)toggle(it.dataset.id);
+});
+document.addEventListener("change",e=>{if(e.target.id==="hideT"){hideTaken=e.target.checked;renderList()}});
+document.addEventListener("keydown",e=>{const it=e.target.closest&&e.target.closest(".item");if(it&&(e.key===" "||e.key==="Enter")){e.preventDefault();toggle(it.dataset.id)}if(e.key==="Escape")closeDrawer()});
+
+/* ---------- košík ---------- */
+const drawer=$("#drawer"), scrim=$("#scrim");
+function openDrawer(){drawer.classList.add("open");scrim.classList.add("open");drawer.setAttribute("aria-hidden","false");refresh().then(lost=>{if(lost)cartView("Niektoré položky medzitým zarezervoval niekto iný – z košíka som ich odstránil.")});setTimeout(()=>$("#dClose").focus(),50)}
+function closeDrawer(){drawer.classList.remove("open");scrim.classList.remove("open");drawer.setAttribute("aria-hidden","true")}
+$("#cartBtn").onclick=openDrawer;$("#stOpen").onclick=openDrawer;$("#dClose").onclick=closeDrawer;scrim.onclick=closeDrawer;
+function renderCart(){
+  const items=P.filter(p=>sel.has(p.id)), sum=items.reduce((s,p)=>s+p.cena,0);
+  $("#badge").textContent=items.length;
+  $("#stN").textContent=pl(items.length);$("#stSum").textContent=eur(sum);
+  $("#sticky").classList.toggle("show",items.length>0&&!drawer.classList.contains("open"));
+  if(drawer.classList.contains("open")&&!drawer.dataset.thanks)cartView();
+}
+function cartView(msg){
+  delete drawer.dataset.thanks;
+  const items=P.filter(p=>sel.has(p.id)), sum=items.reduce((s,p)=>s+p.cena,0);
+  $("#dTitle").textContent="Košík";
+  if(!items.length){$("#dBody").innerHTML=`${msg?`<p class="err">${esc(msg)}</p>`:""}<div class="empty"><svg width="56" height="48" viewBox="0 0 40 34" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h5l4.5 19h19l4-14H9.5"/><circle cx="14" cy="29" r="2.6"/><circle cx="28" cy="29" r="2.6"/></svg><p>Košík je prázdny.<br>Vyberte si súčiastky v zozname.</p><a class="btn gh" href="#kosik" id="toList">Prejsť na zoznam</a></div>`;
+    $("#toList").onclick=closeDrawer;return}
+  $("#dBody").innerHTML=`${msg?`<p class="err">${esc(msg)}</p>`:""}
+    <ul class="dl">${items.map(p=>`<li><span>${esc(p.nazov)}</span><span>${p.odhad?"≈ ":""}${eur(p.cena)}</span></li>`).join("")}</ul>
+    <div class="tot"><span>Spolu</span><b>${eur(sum)}</b></div>
+    <div class="fld"><label for="meno">Vaše meno</label><input id="meno" maxlength="40" autocomplete="name" placeholder="napr. Babka, Krstný otec…"><small>Zobrazí sa pri položkách, aby ostatní vedeli, že sú zabrané.</small></div>
+    <div class="fld"><label for="sprava">Odkaz pre mňa (nepovinné)</label><textarea id="sprava" rows="2" maxlength="300"></textarea></div>
+    <p class="err" id="ferr" hidden></p>
+    <button class="btn pri" type="button" id="confirm" style="justify-content:center">Zarezervovať ${pl(items.length)}</button>`;
+  $("#confirm").onclick=()=>submit(items,sum);
+}
+async function submit(items,sum){
+  const meno=$("#meno").value.trim(), sprava=$("#sprava").value.trim(), f=$("#ferr");
+  if(!meno){f.hidden=false;f.textContent="Napíšte prosím svoje meno.";$("#meno").focus();return}
+  const b=$("#confirm");b.disabled=true;b.textContent="Ukladám…";
+  const res=await reserve(items.map(p=>({polozka:p.id,meno,sprava:sprava||null,suma:p.cena}))).catch(()=>({error:1}));
+  if(res.conflict){await refresh();cartView("Niekto bol rýchlejší – niektoré položky si medzitým zarezervoval iný darca. Košík som upravil, skontrolujte ho.");return}
+  if(res.error){f.hidden=false;f.textContent="Nepodarilo sa uložiť. Skontrolujte internet a skúste znova.";b.disabled=false;b.textContent="Zarezervovať";return}
+  sel.clear();drawer.dataset.thanks="1";await refresh();
+  $("#dTitle").textContent="Ďakujem!";
+  $("#dBody").innerHTML=`<div class="thanks"><p>${esc(meno)}, súčiastky sú zarezervované na vaše meno. Spolu to vychádza na</p><span class="big">${eur(sum)}</span>
+    <p style="color:var(--soft)">Najjednoduchšie je, ak mi dáte túto sumu a súčiastky si objednám sám – viem presne, ktoré kusy k sebe pasujú. Ak chcete radšej kúpiť vec, odkaz na obchod je pri každej položke.</p></div>
+    <button class="btn pri" type="button" id="done" style="justify-content:center;margin-top:auto">Zavrieť</button>`;
+  $("#done").onclick=closeDrawer;
+}
+
+/* ---------- výsledky ---------- */
+const ROAD=[["Výskum","nov 2026",1],["Návrh a schéma","nov 2026",1],["Nákup súčiastok","dec 2026",0],["Stavba","jan – feb",0],["Zabehnutie vody","feb – mar",0],["Prídu rybky","apr 2027",0],["90 dní sám","leto 2027",0]];
+function renderRoad(){
+  const now=ROAD.findIndex(r=>!r[2]);
+  $("#road").innerHTML=`<span class="pr" id="roadPr"></span>`+ROAD.map((r,i)=>`<div class="ms${r[2]?" done":i===now?" now":""}"><span class="dot"></span><b>${esc(r[0])}</b><span>${esc(r[1])}${i===now&&loaded?` · ${Math.round(100*P.filter(p=>taken[p.id]).length/P.length)} % zarezervované`:""}</span></div>`).join("");
+  requestAnimationFrame(()=>{const pr=$("#roadPr");if(pr)pr.style.width=(100*(now+.5)/ROAD.length)+"%"});
+}
+
+/* ---------- animácie ---------- */
+const io="IntersectionObserver" in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -40px 0px"}):null;
+document.querySelectorAll(".rv").forEach((el,i)=>{el.style.transitionDelay=(i%4)*90+"ms";io?io.observe(el):el.classList.add("in")});
+(function bubbles(){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const cv=$("#bubbles"),cx=cv.getContext("2d");let W,Hh,B=[];
+  const size=()=>{W=cv.width=cv.offsetWidth*devicePixelRatio;Hh=cv.height=cv.offsetHeight*devicePixelRatio};size();addEventListener("resize",size);
+  for(let i=0;i<38;i++)B.push({x:Math.random(),y:Math.random(),r:.6+Math.random()*2.6,s:.0006+Math.random()*.0016,w:Math.random()*6});
+  (function f(t){cx.clearRect(0,0,W,Hh);B.forEach(b=>{b.y-=b.s;if(b.y<-.05){b.y=1.05;b.x=Math.random()}
+    const x=(b.x+Math.sin(t/1400+b.w)*.006)*W,y=b.y*Hh,r=b.r*devicePixelRatio;
+    cx.beginPath();cx.arc(x,y,r,0,7);cx.strokeStyle="rgba(200,240,245,.45)";cx.lineWidth=devicePixelRatio*.8;cx.stroke();
+    cx.beginPath();cx.arc(x-r*.35,y-r*.35,r*.3,0,7);cx.fillStyle="rgba(255,255,255,.5)";cx.fill()});
+    if(!document.hidden)requestAnimationFrame(f);else setTimeout(()=>requestAnimationFrame(f),500)})(0);
+})();
+addEventListener("pointermove",e=>{if(matchMedia("(pointer:fine)").matches){const bg=document.querySelector(".hero-bg");const x=(e.clientX/innerWidth-.5)*-14,y=(e.clientY/innerHeight-.5)*-10;bg.style.translate=`${x}px ${y}px`}},{passive:true});
+addEventListener("scroll",()=>{const h=$(".hero").offsetHeight;$("#sticky").classList.toggle("show",sel.size>0&&scrollY>h*.5&&!drawer.classList.contains("open"))},{passive:true});
+
+/* ---------- štart ---------- */
+renderAll();refresh();
+setInterval(()=>{if(!document.hidden&&!drawer.classList.contains("open"))refresh()},15000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)refresh()});
+</script>
+</body>
+</html>
