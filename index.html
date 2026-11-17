@@ -299,6 +299,37 @@ body{background:#DCEEF2}
   .tiles-wrap{background:linear-gradient(180deg,var(--navy) 0 40px,transparent 40px)}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* 3D model farmy */
+.model{margin-top:44px}
+.model h3{font:700 clamp(22px,3vw,30px)/1.15 var(--display);color:var(--navy);margin:0 0 6px}
+.model .lead2{color:var(--soft);font-size:17px;line-height:1.5;margin:0 0 18px;max-width:62ch}
+.mview{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px;align-items:start}
+.mfig{position:relative;margin:0;border-radius:22px;overflow:hidden;background:#F8F8F8;box-shadow:0 18px 40px -26px rgba(20,40,75,.5);cursor:zoom-in;aspect-ratio:16/10}
+.mfig img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.mfig .zoom{position:absolute;right:12px;bottom:12px;background:var(--navy);color:#fff;border-radius:999px;padding:8px 14px;font:600 15px var(--body)}
+.mside{display:flex;flex-direction:column;gap:14px;min-width:0}
+.mtabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mtabs button{all:unset;box-sizing:border-box;cursor:pointer;border-radius:14px;overflow:hidden;background:#fff;border:2px solid var(--line);display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.mtabs button:hover{transform:translateY(-2px)}
+.mtabs button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.mtabs button[aria-selected=true]{border-color:var(--aqua)}
+.mtabs img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:#F8F8F8}
+.mtabs span{padding:6px 10px 8px;font:600 15px/1.2 var(--body);color:var(--navy)}
+.mcap{background:var(--bg);border-radius:18px;padding:16px 18px}
+.mcap b{display:block;font:700 19px var(--display);color:var(--navy);margin-bottom:4px}
+.mcap p{margin:0;color:var(--soft);font-size:16px;line-height:1.5}
+.mleg{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;margin:0;padding:0;font-size:15px;color:var(--soft)}
+.mleg li{display:flex;align-items:center;gap:8px}
+.mleg i{width:16px;height:16px;border-radius:5px;display:inline-block;flex:none}
+.lb{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100vw;height:100vh}
+.lb::backdrop{background:rgba(20,40,75,.9)}
+.lb .in{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;box-sizing:border-box}
+.lb img{max-width:100%;max-height:calc(100vh - 110px);object-fit:contain;background:#F8F8F8;border-radius:14px}
+.lb p{color:#fff;font-size:17px;margin:0;text-align:center;max-width:60ch}
+.lb button{all:unset;cursor:pointer;position:absolute;top:14px;right:14px;background:var(--sun);color:var(--navy);font:700 17px var(--body);padding:10px 18px;border-radius:999px}
+.lb button:focus-visible{outline:3px solid #fff}
+@media(max-width:820px){.mview{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -441,9 +472,23 @@ body{background:#DCEEF2}
         </div>
       </div>
       <div class="alone">
-        <div><span class="ph"><img src="img/krmenie.jpg" alt="" loading="lazy"></span><h3>Nakŕmi rybičky</h3><p>Dve kŕmidlá – keď sa jedno zasekne, druhé ho zastúpi.</p></div>
+        <div><span class="ph"><img src="img/krmenie.jpg" alt="" loading="lazy"></span><h3>Nakŕmi rybičky</h3><p>Otočné kŕmidlo dá každý deň jednu dávku a magnet overí, že sa naozaj otočilo.</p></div>
         <div><span class="ph"><img src="img/voda.jpg" alt="" loading="lazy"></span><h3>Doleje vodu</h3><p>Keď sa voda vyparí, doplní ju zo zásobníka.</p></div>
-        <div><span class="ph"><img src="img/arduino.jpg" alt="" loading="lazy"></span><h3>Ustráži sa</h3><p>Dva počítače sa kontrolujú a kamera mi raz denne pošle fotku.</p></div>
+        <div><span class="ph"><img src="img/arduino.jpg" alt="" loading="lazy"></span><h3>Ustráži sa</h3><p>Senzory strážia vodu aj únik, čerpadlo beží aj bez počítača a kamera mi raz denne pošle fotku.</p></div>
+      </div>
+    
+      <div class="model" id="model">
+        <h3>Takto bude farma vyzerať (3D model)</h3>
+        <p class="lead2">Celú farmu som si najprv postavil v počítači, aby som vedel, čo kam príde. Ťuknite na obrázok a zväčší sa.</p>
+        <div class="mview">
+          <figure class="mfig" id="mFig" tabindex="0" role="button" aria-label="Zväčšiť obrázok"><img id="mImg" src="img/model-popisky.png" alt="3D model farmy s popiskami"><span class="zoom">Zväčšiť</span></figure>
+          <div class="mside">
+            <div class="mtabs" role="tablist" id="mTabs"></div>
+            <div class="mcap" aria-live="polite"><b id="mT"></b><p id="mD"></p></div>
+            <ul class="mleg"><li><i style="background:#A9ABB0"></i>sivé – kúpené hotové</li><li><i style="background:#2680C6"></i>modré – vytlačí sa na 3D tlačiarni</li><li><i style="background:#E67E22"></i>oranžové – treba ešte dokúpiť</li></ul>
+          </div>
+        </div>
+        <dialog class="lb" id="lb" aria-label="Zväčšený obrázok"><div class="in"><img id="lbImg" alt=""><p id="lbCap"></p><button type="button" id="lbX">Zavrieť ✕</button></div></dialog>
       </div>
     </section>
 
@@ -607,7 +652,7 @@ async function drawQR(a,note){
 }
 
 /* ---------- postup ---------- */
-const ROAD=[["Výskum","nov 2026",1],["Návrh a schéma","nov 2026",1],["Zbieranie na súčiastky","dec 2026",0],["Stavba","jan – feb",0],["Zabehnutie vody","feb – mar",0],["Prídu rybičky","apr 2027",0],["90 dní sám","leto 2027",0]];
+const ROAD=[["Výskum","nov 2026",1],["Návrh a schéma","nov 2026",1],["3D model a plán zapojenia","17. 11. 2026",1],["Odmerať diely a vytlačiť prvé diely","nov – dec 2026",0],["Zbieranie na súčiastky","dec 2026",0],["Stavba","jan – feb",0],["Zabehnutie vody","feb – mar",0],["Prídu rybičky","apr 2027",0],["90 dní sám","leto 2027",0]];
 function renderRoad(){
   const now=ROAD.findIndex(r=>!r[2]);
   $("#road").innerHTML=`<span class="pr" id="roadPr"></span>`+ROAD.map((r,i)=>`<div class="ms${r[2]?" done":i===now?" now":""}"><span class="dot"></span><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div>`).join("");
@@ -623,6 +668,27 @@ document.querySelectorAll("#steps button").forEach(b=>{
   b.addEventListener("click",()=>hl(b.classList.contains("on")&&matchMedia("(pointer:coarse)").matches?null:b.dataset.part));
 });
 $("#steps").addEventListener("mouseleave",()=>hl(null));
+
+/* ---------- galeria 3D modelu ---------- */
+const MODEL=[
+  {f:"model-popisky",s:"S popiskami",t:"Čo je čo",d:"Každá časť má svoj štítok. Dole pod stolom stoja dve kanistre s vodou, na stole akvárium a nad ním rastliny."},
+  {f:"model-celok",s:"Celá farma",t:"Celá farma",d:"Akvárium s rybičkami je dole, rastliny rastú hore na drevenom ráme a nad nimi svieti svetlo. Pod stolom sú kanistre s čistou a použitou vodou."},
+  {f:"model-rez",s:"Rez",t:"Pohľad dovnútra",d:"Ako keby sme farmu prekrojili. Voda ide z akvária hore k rastlinám, tie ju vyčistia a stečie späť k rybičkám."},
+  {f:"model-elektro",s:"Elektronika",t:"Modrá krabička s mozgom",d:"Tu býva počítač, ktorý všetko stráži: zapína čerpadlo, kŕmi rybičky, meria vodu a posiela správy do mobilu."}
+];
+(function(){
+  const tabs=$("#mTabs"),img=$("#mImg"),lb=$("#lb");let cur=0;
+  tabs.innerHTML=MODEL.map((m,i)=>`<button type="button" role="tab" aria-selected="${i===0}" data-i="${i}"><img src="img/${m.f}.png" alt="" loading="lazy"><span>${m.s}</span></button>`).join("");
+  function show(i){cur=i;const m=MODEL[i];img.src=`img/${m.f}.png`;img.alt="3D model farmy – "+m.t;$("#mT").textContent=m.t;$("#mD").textContent=m.d;
+    tabs.querySelectorAll("button").forEach((b,k)=>b.setAttribute("aria-selected",k===i))}
+  tabs.addEventListener("click",e=>{const b=e.target.closest("button");if(b)show(+b.dataset.i)});
+  function open(){const m=MODEL[cur];$("#lbImg").src=`img/${m.f}.png`;$("#lbImg").alt=img.alt;$("#lbCap").textContent=m.t+" – "+m.d;if(lb.showModal)lb.showModal();else lb.setAttribute("open","")}
+  $("#mFig").addEventListener("click",open);
+  $("#mFig").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}});
+  $("#lbX").addEventListener("click",()=>lb.close?lb.close():lb.removeAttribute("open"));
+  lb.addEventListener("click",e=>{if(e.target===lb||e.target.classList.contains("in"))lb.close()});
+  show(0);
+})();
 
 /* ---------- obrazovky (karty namiesto dlheho scrollu) ---------- */
 const VIEWS=["ako","pomoc","postup","omne"];
