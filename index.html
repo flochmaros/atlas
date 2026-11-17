@@ -137,6 +137,22 @@ a{color:inherit}
 .alone div{border-radius:20px;padding:22px;background:var(--bg);display:flex;flex-direction:column;gap:8px}
 .alone svg{width:60px;height:60px}
 .alone p{color:var(--soft);font-size:16px;line-height:1.45}
+/* Trochu podrobnejsie: karty s malymi schemami */
+.deep{margin-top:44px;display:flex;flex-direction:column;gap:16px}
+.deep-h{font-size:clamp(24px,3vw,32px);font-weight:800}
+.dc{background:var(--card);border-radius:22px;padding:24px;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:10px}
+.dc p{color:var(--soft);font-size:16px;line-height:1.5}
+.dc b{color:var(--navy)}
+.dc.wide{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+.dc.wide>div{display:flex;flex-direction:column;gap:10px}
+.dc .note{background:var(--sun-10);color:#5A3D05;border-radius:14px;padding:12px 14px}
+.dia{width:100%;max-width:420px;height:auto;justify-self:center}
+.mini{width:100%;height:120px;background:#F7FBFC;border-radius:14px}
+.dgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.alone .alone-h{grid-column:1/-1;background:none;padding:6px 4px 0}
+.alone-h .kick{color:var(--aqua)}
+.alone-h p:last-child{max-width:70ch}
+@media (max-width:860px){.dc.wide,.dgrid{grid-template-columns:1fr}}
 
 /* pomoc */
 .help-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:start}
@@ -406,14 +422,19 @@ body{background:#DCEEF2}
       <div class="screen-head"><p class="kick">Ako to funguje</p><h2>Malý kolobeh prírody na stole</h2><p class="lead">Ukážte myšou alebo ťuknite na krok – na nákrese sa zvýrazní.</p></div>
       <div class="how">
         <div class="sketch">
-          <svg id="sk" viewBox="0 0 760 580" role="img" aria-labelledby="skT skD">
-            <title id="skT">Nákres akvária a farmy ATLAS</title>
-            <desc id="skD">Hore je lôžko so zeleninou v keramzite, pod ním akvárium s rybičkami. Čerpadlo vytláča vodu hore k rastlinám a tá steká späť dole. Vedľa je počítač, kamera, kŕmidlo a vzduchovanie.</desc>
+          <svg id="sk" viewBox="0 -78 760 658" role="img" aria-labelledby="skT skD">
+            <title id="skT">Nákres akvaponickej farmy ATLAS</title>
+            <desc id="skD">Hore svieti lampa nad lôžkom s rastlinami v keramzite, pod ním je akvárium s rybičkami. Čerpadlo vytláča vodu hore k rastlinám a tá steká späť dole. Vzduchovanie robí v akváriu bublinky s kyslíkom.</desc>
             <defs>
               <symbol id="fish" viewBox="0 0 44 20"><path d="M2 10C8 2 22 1 32 10 22 19 8 18 2 10z" fill="#F2A922"/><path d="M8 9.5C14 7 22 7 30 10" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/><path d="M31 10l10-7v14z" fill="#F2A922"/><circle cx="8" cy="8.5" r="1.8" fill="#14284B"/></symbol>
               <pattern id="clay" width="22" height="18" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="5" fill="#F2A922" opacity=".35"/><circle cx="17" cy="13" r="5" fill="#F2A922" opacity=".25"/></pattern>
               <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1l8 4-8 4" fill="none" stroke="#14284B" stroke-width="1.6" stroke-linecap="round"/></marker>
             </defs>
+            <g class="part" data-part="svetlo">
+              <rect x="200" y="-66" width="360" height="18" rx="9" fill="#14284B"/><rect x="214" y="-50" width="332" height="6" rx="3" fill="#F2A922"/>
+              <g stroke="#F2A922" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10" opacity=".8"><path d="M250-36v40M330-36v40M410-36v40M490-36v40"/></g>
+              <path class="arrow" d="M640-40c-30-4-50-10-72-16" marker-end="url(#ah)"/><text class="t" x="610" y="-16">svetlo</text>
+            </g>
             <g class="part" data-part="rastliny">
               <g fill="#4FAE72">
                 <path class="sway" d="M230 112c-24-30-18-62 4-82 10 30 8 56-4 82z"/><path class="sway" d="M262 112c4-34 26-56 54-62-4 30-22 52-54 62z"/>
@@ -429,7 +450,8 @@ body{background:#DCEEF2}
               <rect x="192" y="114" width="376" height="60" rx="6" fill="url(#clay)"/>
               <path class="arrow" d="M640 150c-20 0-40 0-62 0" marker-end="url(#ah)"/><text class="t" x="600" y="128">keramzit</text><text class="t" x="600" y="186">+ baktérie</text>
             </g>
-            <g class="part" data-part="cerpadlo"><path class="flow down" d="M222 176V266" stroke="#3CC6C9" stroke-width="7" fill="none"/></g>
+            <g class="part" data-part="cerpadlo"><path class="flow down" d="M222 176V266" stroke="#3CC6C9" stroke-width="7" fill="none"/>
+              <path class="arrow" d="M120 238c40 2 66-4 92-14" marker-end="url(#ah)"/><text class="t" x="14" y="232">steká späť</text></g>
             <rect x="170" y="242" width="420" height="230" rx="10" fill="#D9F3F3" stroke="#14284B" stroke-width="3"/>
             <path d="M172 266h416" stroke="#3CC6C9" stroke-width="2.5"/>
             <path d="M172 450c60-10 130 6 200-2s140-6 216 0V470H172z" fill="#E9DDBF"/>
@@ -438,43 +460,103 @@ body{background:#DCEEF2}
               <g class="swim c"><use href="#fish" x="270" y="392" width="50" height="23"/></g><g class="swim b"><use href="#fish" x="440" y="296" width="40" height="18"/></g>
               <path class="arrow" d="M106 360c50 6 100 4 150 -6" marker-end="url(#ah)"/><text class="t" x="18" y="352">rybičky</text>
             </g>
-            <g>
+            <g class="part" data-part="kyslik">
               <rect x="70" y="486" width="64" height="38" rx="8" fill="#fff" stroke="#14284B" stroke-width="2.5"/>
               <path d="M134 505h50V458h60" stroke="#14284B" stroke-width="2" fill="none"/><rect x="240" y="452" width="22" height="10" rx="4" fill="#14284B"/>
               <g fill="none" stroke="#3CC6C9" stroke-width="2"><circle class="bub" cx="251" cy="444" r="4"/><circle class="bub" cx="246" cy="444" r="3"/><circle class="bub" cx="256" cy="444" r="3.5"/><circle class="bub" cx="250" cy="444" r="2.5"/></g>
-              <text class="t" x="44" y="560">vzduch (ide aj bez počítača)</text>
+              <text class="t" x="44" y="560">vzduchovanie = kyslík</text>
             </g>
-            <g><path d="M410 206h44l-10 32h-24z" fill="#fff" stroke="#14284B" stroke-width="2.5" stroke-linejoin="round"/><circle cx="432" cy="248" r="2.5" fill="#F2A922"/><circle cx="428" cy="258" r="2" fill="#F2A922"/><text class="t" x="352" y="200">kŕmidlo</text></g>
+            <g class="part" data-part="ryby"><path d="M410 206h44l-10 32h-24z" fill="#fff" stroke="#14284B" stroke-width="2.5" stroke-linejoin="round"/><circle cx="432" cy="248" r="2.5" fill="#F2A922"/><circle cx="428" cy="258" r="2" fill="#F2A922"/><text class="t" x="352" y="200">kŕmidlo</text></g>
             <g class="part" data-part="cerpadlo">
               <path class="flow" d="M542 424V130" stroke="#3CC6C9" stroke-width="7" fill="none"/><rect x="522" y="424" width="42" height="36" rx="8" fill="#14284B"/>
               <path class="arrow" d="M640 470c-26 0-46-8-70-20" marker-end="url(#ah)"/><text class="t" x="640" y="478">čerpadlo</text>
-            </g>
-            <g class="part" data-part="mozog">
-              <rect x="624" y="300" width="96" height="66" rx="10" fill="#14284B"/>
-              <text x="672" y="340" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="700" font-size="17" fill="#fff">počítač</text>
-              <circle class="blink" cx="706" cy="314" r="4" fill="#3CC6C9"/><path d="M624 334h-34" stroke="#14284B" stroke-width="2" stroke-dasharray="4 4"/>
-              <text class="t" x="626" y="290">mozog</text>
-              <rect x="640" y="216" width="46" height="30" rx="6" fill="#fff" stroke="#14284B" stroke-width="2.5"/><circle cx="652" cy="231" r="8" fill="#14284B"/><circle cx="652" cy="231" r="3" fill="#3CC6C9"/>
-              <text class="t" x="694" y="240">kamera</text>
+              <path class="arrow" d="M640 300c-30 0-58-6-84-18" marker-end="url(#ah)"/><text class="t" x="608" y="330">voda hore</text><text class="t" x="608" y="356">~150 l/h</text>
             </g>
             <rect x="150" y="478" width="460" height="16" rx="6" fill="#fff" stroke="#14284B" stroke-width="2.5"/>
           </svg>
         </div>
         <div>
           <ol class="steps" id="steps">
-            <li><button type="button" data-part="ryby"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16c6-8 16-9 22 0-6 9-16 8-22 0z"/><path d="M25 16l5-5v10z"/></svg></span><span><b>Rybičky</b>Zjedia krmivo a do vody pustia odpad.</span></button></li>
-            <li><button type="button" data-part="bakterie"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10" cy="12" r="5"/><circle cx="21" cy="10" r="4"/><circle cx="18" cy="22" r="6"/></svg></span><span><b>Baktérie</b>V hlinených guľôčkach z odpadu spravia hnojivo.</span></button></li>
-            <li><button type="button" data-part="rastliny"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 29V15"/><path d="M16 18C14 11 8 8 3 9c1 7 6 10 13 9zM16 15c1-8 7-12 13-12-1 8-7 12-13 12z"/></svg></span><span><b>Zelenina</b>Hnojivo vypije koreňmi – voda je zase čistá.</span></button></li>
-            <li><button type="button" data-part="cerpadlo"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M16 4c5 7 8 11 8 15a8 8 0 01-16 0c0-4 3-8 8-15z"/></svg></span><span><b>Čerpadlo</b>Vodu vozí hore a dole stále dokola.</span></button></li>
-            <li><button type="button" data-part="mozog"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="8" y="8" width="16" height="16" rx="3"/><path d="M12 4v4M20 4v4M12 24v4M20 24v4M4 12h4M4 20h4M24 12h4M24 20h4"/></svg></span><span><b>Počítač</b>Kŕmi, svieti, meria a posiela mi fotky.</span></button></li>
+            <li><button type="button" data-part="ryby"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16c6-8 16-9 22 0-6 9-16 8-22 0z"/><path d="M25 16l5-5v10z"/></svg></span><span><b>Rybičky</b>Zjedia krmivo z kŕmidla a do vody pustia odpad – hlavne amoniak, ktorý je pre ne jedovatý.</span></button></li>
+            <li><button type="button" data-part="bakterie"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10" cy="12" r="5"/><circle cx="21" cy="10" r="4"/><circle cx="18" cy="22" r="6"/></svg></span><span><b>Baktérie</b>Bývajú na hlinených guľôčkach (keramzit) a z amoniaku spravia hnojivo – dusičnany.</span></button></li>
+            <li><button type="button" data-part="rastliny"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 29V15"/><path d="M16 18C14 11 8 8 3 9c1 7 6 10 13 9zM16 15c1-8 7-12 13-12-1 8-7 12-13 12z"/></svg></span><span><b>Rastliny</b>Hnojivo vypijú koreňmi. Voda, ktorá steká dole, je zase čistá.</span></button></li>
+            <li><button type="button" data-part="cerpadlo"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M16 4c5 7 8 11 8 15a8 8 0 01-16 0c0-4 3-8 8-15z"/></svg></span><span><b>Voda v obehu</b>Čerpadlo ju vytlačí hore, späť steká sama. Celé akvárium prejde rastlinami asi 3× za hodinu.</span></button></li>
+            <li><button type="button" data-part="kyslik"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="22" r="5"/><circle cx="21" cy="14" r="4"/><circle cx="13" cy="7" r="3"/></svg></span><span><b>Kyslík</b>Vzduchovanie robí bublinky. Kyslík dýchajú rybičky aj baktérie.</span></button></li>
+            <li><button type="button" data-part="svetlo"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="6"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M7 7l3 3M22 22l3 3M7 25l3-3M22 10l3-3"/></svg></span><span><b>Svetlo</b>LED lampa nad rastlinami im nahrádza slnko – ráno sa zapne, večer zhasne.</span></button></li>
           </ol>
           <p class="loop"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M24 10a10 10 0 10 2 8"/><path d="M25 3v7h-7"/></svg>…a stále dookola</p>
         </div>
       </div>
+      <div class="deep">
+        <h3 class="deep-h">Trochu podrobnejšie</h3>
+        <article class="dc wide">
+          <div>
+            <p class="kick">Srdce farmy</p>
+            <h3>Kolobeh dusíka</h3>
+            <p>Rybičky dýchajú žiabrami a pritom do vody vypúšťajú <b>amoniak</b>. V akváriu bez pomoci by sa ho nahromadilo toľko, že by ich otrávil.</p>
+            <p>Tu nastúpia dve skupiny <b>baktérií</b>. Prvé zmenia amoniak na <b>dusitany</b> (tiež jedovaté), druhé dusitany na <b>dusičnany</b>. Tie sú pre ryby takmer neškodné – a pre rastliny sú to najlepšie hnojivo.</p>
+            <p>Rastliny dusičnany vypijú a čistá voda sa vráti k rybičkám. Nikto nemusí sypať hnojivo ani meniť vodu.</p>
+            <p class="note">Baktérie sa musia najprv rozmnožiť. Preto farma beží 3–6 týždňov naprázdno a rybičky prídu až potom.</p>
+          </div>
+          <svg class="dia" viewBox="0 0 420 380" role="img" aria-label="Kruh: rybičky, amoniak, baktérie, dusitany, baktérie, dusičnany, rastliny, čistá voda späť k rybičkám">
+            <defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1l8 4-8 4z" fill="#1E8E91"/></marker></defs>
+            <circle cx="210" cy="190" r="132" fill="none" stroke="#D9F3F3" stroke-width="26"/>
+            <g fill="none" stroke="#1E8E91" stroke-width="3" marker-end="url(#ah2)">
+              <path d="M262 70a132 132 0 0 1 72 72"/><path d="M340 240a132 132 0 0 1-72 72"/><path d="M158 312a132 132 0 0 1-72-72"/><path d="M80 142a132 132 0 0 1 72-72"/>
+            </g>
+            <g font-family="Figtree,sans-serif" text-anchor="middle">
+              <circle cx="210" cy="58" r="44" fill="#fff" stroke="#14284B" stroke-width="2.5"/><use href="#fish" x="186" y="34" width="48" height="22"/><text x="210" y="80" font-size="14" font-weight="700" fill="#14284B">rybičky</text>
+              <circle cx="342" cy="190" r="48" fill="#FDE7E2" stroke="#E5533D" stroke-width="2.5"/><text x="342" y="186" font-size="15" font-weight="700" fill="#14284B">amoniak</text><text x="342" y="205" font-size="12" fill="#B33A27">jed</text>
+              <circle cx="210" cy="322" r="44" fill="#FDF0D6" stroke="#B87A0B" stroke-width="2.5"/><text x="210" y="318" font-size="15" font-weight="700" fill="#14284B">dusitany</text><text x="210" y="336" font-size="12" fill="#B87A0B">stále jed</text>
+              <circle cx="78" cy="190" r="48" fill="#E3F4E8" stroke="#4FAE72" stroke-width="2.5"/><text x="78" y="186" font-size="15" font-weight="700" fill="#14284B">dusičnany</text><text x="78" y="205" font-size="12" fill="#2F7A4B">hnojivo</text>
+            </g>
+            <g font-family="Caveat,cursive" font-size="21" font-weight="600" fill="#1E8E91" text-anchor="middle">
+              <text x="210" y="168">baktérie</text><text x="210" y="190">v keramzite</text><text x="210" y="220" font-size="17" fill="#4F5F78">pracujú 24 h denne</text>
+              <text x="352" y="96">odpad</text><text x="330" y="300">baktérie č. 1</text><text x="88" y="300">baktérie č. 2</text><text x="68" y="96">rastliny vypijú</text>
+            </g>
+          </svg>
+        </article>
+        <div class="dgrid">
+          <article class="dc">
+            <svg class="mini" viewBox="0 0 220 130" aria-hidden="true">
+              <rect x="40" y="8" width="140" height="34" rx="6" fill="#FDF0D6" stroke="#14284B" stroke-width="2"/><text x="110" y="30" text-anchor="middle" font-family="Figtree,sans-serif" font-size="13" font-weight="700" fill="#14284B">rastliny</text>
+              <rect x="30" y="66" width="160" height="56" rx="6" fill="#D9F3F3" stroke="#14284B" stroke-width="2"/><text x="110" y="100" text-anchor="middle" font-family="Figtree,sans-serif" font-size="13" font-weight="700" fill="#14284B">akvárium</text>
+              <path class="flow" d="M166 110V42" stroke="#3CC6C9" stroke-width="5" fill="none"/><path class="flow down" d="M54 42V78" stroke="#3CC6C9" stroke-width="5" fill="none"/>
+              <rect x="158" y="106" width="16" height="12" rx="3" fill="#14284B"/>
+            </svg>
+            <h3>Cesta vody</h3>
+            <p>Čerpadlo na dne akvária tlačí asi 150 litrov za hodinu hore do lôžka. Keď voda v lôžku vystúpi po okraj prepadovej rúrky, stečie späť – lôžko teda nepretečie.</p>
+            <p>Časť vody sa vyparí a rastliny ju „vydýchajú“ cez listy – za 90 dní 15 až 30 litrov. Tú automaticky doleje malé čerpadlo z kanistra.</p>
+          </article>
+          <article class="dc">
+            <svg class="mini" viewBox="0 0 220 130" aria-hidden="true">
+              <rect x="20" y="10" width="180" height="110" rx="8" fill="#D9F3F3" stroke="#14284B" stroke-width="2"/>
+              <rect x="96" y="106" width="28" height="9" rx="4" fill="#14284B"/>
+              <g fill="none" stroke="#3CC6C9" stroke-width="2"><circle class="bub" cx="110" cy="100" r="5"/><circle class="bub" cx="104" cy="100" r="4"/><circle class="bub" cx="116" cy="100" r="4.5"/><circle class="bub" cx="110" cy="100" r="3"/></g>
+              <use href="#fish" x="34" y="40" width="50" height="23"/><use href="#fish" x="140" y="62" width="40" height="18"/>
+            </svg>
+            <h3>Kyslík</h3>
+            <p>Rybičky dýchajú kyslík rozpustený vo vode a baktérie bez neho nedokážu čistiť. Bublinky zo vzduchovania vodu premiešavajú a kyslík do nej pridávajú.</p>
+            <p>Vzduchovanie má vlastnú zásuvku a nič ho nevypína – beží, aj keby sa pokazil počítač.</p>
+          </article>
+          <article class="dc">
+            <svg class="mini" viewBox="0 0 220 130" aria-hidden="true">
+              <rect x="40" y="8" width="140" height="14" rx="7" fill="#14284B"/><rect x="50" y="20" width="120" height="5" rx="2" fill="#F2A922"/>
+              <g stroke="#F2A922" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"><path d="M80 34v34M110 34v34M140 34v34"/></g>
+              <path d="M110 122V84" stroke="#4FAE72" stroke-width="4" stroke-linecap="round"/><path d="M110 96c-8-14-24-18-38-14 6 14 20 18 38 14zM110 88c6-14 22-20 36-18-4 14-20 20-36 18z" fill="#4FAE72"/>
+            </svg>
+            <h3>Svetlo</h3>
+            <p>Rastliny si zo svetla, vody a vzduchu vyrábajú cukor, z ktorého rastú (fotosyntéza). Na stole v izbe je slnka málo, preto nad nimi visia LED lišty asi 33 cm nad lôžkom.</p>
+            <p>Svetlo sa zapína a vypína ako deň a noc, aby rastliny aj rybičky mali svoj rytmus.</p>
+          </article>
+        </div>
+      </div>
+
       <div class="alone">
+        <div class="alone-h"><p class="kick">Inteligentné technológie</p><h3>Čo za mňa urobí počítač</h3><p>Prírodu nechávam pracovať samu. Počítač iba pomáha s vecami, ktoré by inak robil človek. A keby sa pokazil, rybičky to neohrozí – čerpadlo aj vzduch bežia bez neho.</p></div>
         <div><span class="ph"><img src="img/krmenie.jpg" alt="" loading="lazy"></span><h3>Nakŕmi rybičky</h3><p>Otočné kŕmidlo dá každý deň jednu dávku a magnet overí, že sa naozaj otočilo.</p></div>
-        <div><span class="ph"><img src="img/voda.jpg" alt="" loading="lazy"></span><h3>Doleje vodu</h3><p>Keď sa voda vyparí, doplní ju zo zásobníka.</p></div>
-        <div><span class="ph"><img src="img/arduino.jpg" alt="" loading="lazy"></span><h3>Ustráži sa</h3><p>Senzory strážia vodu aj únik, čerpadlo beží aj bez počítača a kamera mi raz denne pošle fotku.</p></div>
+        <div><span class="ph"><img src="img/voda.jpg" alt="" loading="lazy"></span><h3>Doleje vodu</h3><p>Plavák stráži hladinu. Keď klesne, malé čerpadlo doleje vodu z kanistra – nikdy nie viac, než treba.</p></div>
+        <div><span class="ph"><img src="img/arduino.jpg" alt="" loading="lazy"></span><h3>Stráži a hlási</h3><p>Senzory strážia teplotu, kvalitu vody aj únik. Kamera fotí rybičky a rastliny a umelá inteligencia raz denne všetko skontroluje a pošle mi správu.</p></div>
       </div>
     
       <div class="model" id="model">
