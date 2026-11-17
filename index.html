@@ -124,22 +124,6 @@ a{color:inherit}
 @keyframes sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
 .blink{animation:blink 2s steps(1) infinite}
 @keyframes blink{50%{opacity:.2}}
-.steps{display:flex;flex-direction:column;gap:6px;list-style:none;margin:0;padding:0}
-.steps button{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:center;padding:12px 14px;border-radius:18px;cursor:pointer;transition:background .25s}
-.steps button:hover,.steps button:focus-visible,.steps button.on{background:var(--aqua-10)}
-.steps .ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:var(--aqua-10);color:var(--aqua-d)}
-.steps button.on .ic{background:var(--navy);color:#fff}
-.steps .ic svg{width:28px;height:28px}
-.steps b{display:block;font:600 19px var(--display)}
-.steps span{color:var(--soft);font-size:16px;line-height:1.4}
-.loop{display:flex;align-items:center;gap:8px;margin-top:6px;color:var(--aqua-d);font:600 24px var(--hand);padding-left:14px}
-.alone{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:36px}
-.alone div{border-radius:20px;padding:22px;background:var(--bg);display:flex;flex-direction:column;gap:8px}
-.alone svg{width:60px;height:60px}
-.alone p{color:var(--soft);font-size:16px;line-height:1.45}
-/* Trochu podrobnejsie: karty s malymi schemami */
-.deep{margin-top:44px;display:flex;flex-direction:column;gap:16px}
-.deep-h{font-size:clamp(24px,3vw,32px);font-weight:800}
 .dc{background:var(--card);border-radius:22px;padding:24px;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:10px}
 .dc p{color:var(--soft);font-size:16px;line-height:1.5}
 .dc b{color:var(--navy)}
@@ -147,12 +131,28 @@ a{color:inherit}
 .dc.wide>div{display:flex;flex-direction:column;gap:10px}
 .dc .note{background:var(--sun-10);color:#5A3D05;border-radius:14px;padding:12px 14px}
 .dia{width:100%;max-width:420px;height:auto;justify-self:center}
-.mini{width:100%;height:120px;background:#F7FBFC;border-radius:14px}
-.dgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.alone .alone-h{grid-column:1/-1;background:none;padding:6px 4px 0}
-.alone-h .kick{color:var(--aqua)}
-.alone-h p:last-child{max-width:70ch}
-@media (max-width:860px){.dc.wide,.dgrid{grid-template-columns:1fr}}
+/* pribeh v 5 krokoch */
+.sketch .t.s{font-size:21px;fill:var(--soft)}
+.sketch .num{fill:var(--navy);stroke:#fff;stroke-width:3}
+.sketch .nt{font:800 18px var(--display);fill:var(--sun);text-anchor:middle;pointer-events:none}
+.sketch .part{cursor:pointer}
+.story{display:flex;flex-direction:column;gap:12px;min-height:260px}
+.story h3{font-size:clamp(24px,2.6vw,30px);font-weight:800}
+.story p:not(.kick){color:var(--soft);font-size:18px;line-height:1.55}
+.stnav{display:flex;align-items:center;gap:12px;margin-top:auto;flex-wrap:wrap}
+.dots{display:flex;gap:6px;flex:1;justify-content:center}
+.dots button{all:unset;cursor:pointer;width:12px;height:12px;border-radius:50%;background:var(--line)}
+.dots button[aria-current=true]{background:var(--aqua-d)}
+.keep{margin-top:40px}
+.kgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:14px}
+.kgrid>div{display:flex;gap:14px;align-items:flex-start;background:var(--card);border-radius:18px;padding:18px;box-shadow:inset 0 0 0 1px var(--line)}
+.kgrid .ic{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--aqua-10);color:var(--aqua-d)}
+.kgrid .ic svg{width:26px;height:26px}
+.kgrid p{color:var(--soft);font-size:16px;line-height:1.45}
+.kgrid b{display:block;color:var(--navy);font:600 18px var(--display)}
+.more{margin-top:20px}
+.more summary{cursor:pointer;font:600 18px var(--display);color:var(--aqua-d);padding:10px 0}
+@media (max-width:860px){.dc.wide,.kgrid{grid-template-columns:1fr}}
 
 /* pomoc */
 .help-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:start}
@@ -226,9 +226,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
 /* fotky v kartach */
 .tile .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .tile:hover .pic img{transform:scale(1.08)}
-.alone .ph{display:block;height:150px;border-radius:16px;overflow:hidden;margin-bottom:6px}
-.alone .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
-.alone div:hover .ph img{transform:scale(1.06)}
 .pk .ill.photo{position:relative;height:130px;overflow:hidden;padding:0}
 .pk .ill.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
 .pk:hover .ill.photo img{transform:scale(1.07)}
@@ -255,7 +252,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   .ctas .btn{flex:1 1 100%}
   .tile .pic{height:70px}
   .tile p{display:none}
-  .pk-list,.alone{grid-template-columns:1fr}
+  .pk-list{grid-template-columns:1fr}
   .tile[aria-selected=true]::after{display:none}
 }
 
@@ -277,7 +274,7 @@ body{background:#DCEEF2}
 .ap-frame{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 40px 90px -30px rgba(0,0,0,.7),0 0 0 6px rgba(255,255,255,.08);transform-style:preserve-3d}
 .ap-frame img{position:absolute;left:-3%;top:-3%;width:106%;height:106%;object-fit:cover;display:block;filter:saturate(1.15) contrast(1.05)}
 .ap-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,40,75,0) 55%,rgba(20,40,75,.35));pointer-events:none}
-#bubbles{position:absolute;left:12%;top:74%;width:62%;height:26%;pointer-events:none;z-index:1}
+#bubbles{position:absolute;left:28%;top:64%;width:43%;height:28%;pointer-events:none;z-index:1}
 .ap-ov{position:absolute;inset:0;width:100%;height:100%;z-index:2}
 .fl{fill:none;stroke-width:10;stroke-linecap:round;stroke-dasharray:2 22;animation:flow2 1s linear infinite}
 .fl.up{stroke:var(--sun);filter:drop-shadow(0 0 6px #F2A922)}
@@ -290,7 +287,7 @@ body{background:#DCEEF2}
 .lbl{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 7px;border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--navy);font-weight:700;font-size:15px;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);white-space:nowrap}
 .lbl i{animation:pinp 2.4s ease-in-out infinite}
 .lbl i,.legend i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font:800 14px var(--display);flex:none}
-.lbl{transform:translateY(-50%)}.l1{left:calc(23% - 20px);top:88%}.l2{right:calc(27.4% - 20px);top:54%;flex-direction:row-reverse;padding:7px 7px 7px 12px}.l3{left:calc(54.7% - 20px);top:12.5%}.l4{left:calc(42% - 20px);top:67.7%}
+.lbl{transform:translateY(-50%)}.l1{left:calc(44% - 20px);top:80%}.l2{left:calc(29.4% - 20px);top:40%}.l3{left:calc(56% - 20px);top:17%}.l4{left:calc(58% - 20px);top:56%}
 .legend{display:none;list-style:none;margin:14px 0 0;padding:0;grid-template-columns:1fr 1fr;gap:8px}
 .legend li{display:flex;align-items:center;gap:8px;font-size:15px;color:#DDE6F2}
 .ap figcaption{margin-top:14px;font-size:14px;color:#9FB2CF}
@@ -304,9 +301,6 @@ body{background:#DCEEF2}
 .tile.help p{color:#5A3D05}
 .tile.help h3::after{color:var(--navy)}
 .tile[aria-selected=true]{box-shadow:0 0 0 4px #fff,0 0 0 7px var(--navy),0 22px 40px -24px rgba(20,40,75,.55)}
-.alone{background:var(--navy);border-radius:24px;padding:22px}
-.alone div{background:rgba(255,255,255,.07);color:#fff}
-.alone p{color:#C9D6EA}
 @media (max-width:980px){.hero .wrap{grid-template-columns:1fr}.ap{max-width:640px}}
 @media (max-width:640px){
   .lbl{font-size:0;gap:0;padding:3px!important}
@@ -317,15 +311,15 @@ body{background:#DCEEF2}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 
 /* 3D model farmy */
-.model{margin-top:44px}
+.model{margin-top:44px;background:var(--card);border-radius:24px;padding:24px;box-shadow:0 18px 40px -28px rgba(20,40,75,.45)}
 .model h3{font:700 clamp(22px,3vw,30px)/1.15 var(--display);color:var(--navy);margin:0 0 6px}
 .model .lead2{color:var(--soft);font-size:17px;line-height:1.5;margin:0 0 18px;max-width:62ch}
-.mview{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px;align-items:start}
+.mview{display:grid;gap:18px}
 .mfig{position:relative;margin:0;border-radius:22px;overflow:hidden;background:#F8F8F8;box-shadow:0 18px 40px -26px rgba(20,40,75,.5);cursor:zoom-in;aspect-ratio:16/10}
 .mfig img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
 .mfig .zoom{position:absolute;right:12px;bottom:12px;background:var(--navy);color:#fff;border-radius:999px;padding:8px 14px;font:600 15px var(--body)}
 .mside{display:flex;flex-direction:column;gap:14px;min-width:0}
-.mtabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.mtabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
 .mtabs button{all:unset;box-sizing:border-box;cursor:pointer;border-radius:14px;overflow:hidden;background:#fff;border:2px solid var(--line);display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
 .mtabs button:hover{transform:translateY(-2px)}
 .mtabs button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
@@ -379,12 +373,11 @@ body{background:#DCEEF2}
     </div>
     <figure class="ap h-scene">
       <div class="ap-frame">
-        <img src="img/akvaponia.jpg" alt="Veľká akvapónia v skleníku: dole nádrž s rybami, nad ňou police so zeleninou a bylinkami" width="1280" height="960">
+        <img src="img/model3d.png" alt="3D model farmy ATLAS: dole akvárium s rybkami, nad ním drevený rám s pestovacím boxom, keramzitom, potosom a bylinkami" width="1280" height="960">
         <canvas id="bubbles" aria-hidden="true"></canvas>
         <svg class="ap-ov" viewBox="0 0 1280 960" aria-hidden="true">
-          <path class="fl up" d="M860 880Q930 860 930 780V260Q930 205 875 195"/>
-          <path class="fl dn" d="M770 452C690 468 615 480 590 518"/>
-          <path class="fl dn" d="M638 735C640 755 644 772 650 795"/>
+          <path class="fl up" d="M376 560V245Q376 210 412 210Q448 210 448 245V300"/>
+          <path class="fl dn" d="M744 520V600"/>
         </svg>
         <span class="lbl l1"><i>1</i>Rybičky robia hnojivo</span>
         <span class="lbl l2"><i>2</i>Čerpadlo vozí vodu hore</span>
@@ -392,7 +385,7 @@ body{background:#DCEEF2}
         <span class="lbl l4"><i>4</i>Čistá voda tečie späť</span>
       </div>
       <ol class="legend"><li><i>1</i>Rybičky robia hnojivo</li><li><i>2</i>Čerpadlo vozí vodu hore</li><li><i>3</i>Zelenina si ho vypije</li><li><i>4</i>Čistá voda tečie späť</li></ol>
-      <figcaption>Takto vyzerá veľká akvapónia v skleníku. ATLAS bude jej malá verzia na stole. <a href="https://commons.wikimedia.org/wiki/File:Aquaponics_at_Growing_Power,_Milwaukee.jpg" target="_blank" rel="noopener">Foto: ryan griffis, CC BY-SA 2.0</a></figcaption>
+      <figcaption>Takto bude vyzerať ATLAS – môj 3D model z OpenSCADu. Dole rybky, hore rastlinky v keramzite.</figcaption>
     </figure>
   </div>
 </section>
@@ -419,76 +412,92 @@ body{background:#DCEEF2}
 
     <!-- AKO TO FUNGUJE -->
     <section class="screen" data-v="ako" aria-label="Ako to funguje">
-      <div class="screen-head"><p class="kick">Ako to funguje</p><h2>Malý kolobeh prírody na stole</h2><p class="lead">Ukážte myšou alebo ťuknite na krok – na nákrese sa zvýrazní.</p></div>
+      <div class="screen-head"><p class="kick">Ako to funguje</p><h2>Ryby hnoja rastliny, rastliny čistia vodu rybám</h2><p class="lead">Prejdite si kolobeh v 5 krokoch – ťuknite na „Ďalej“ alebo na číslo v nákrese.</p></div>
       <div class="how">
         <div class="sketch">
-          <svg id="sk" viewBox="0 -78 760 658" role="img" aria-labelledby="skT skD">
+          <svg id="sk" viewBox="0 0 760 580" role="img" aria-labelledby="skT skD">
             <title id="skT">Nákres akvaponickej farmy ATLAS</title>
-            <desc id="skD">Hore svieti lampa nad lôžkom s rastlinami v keramzite, pod ním je akvárium s rybičkami. Čerpadlo vytláča vodu hore k rastlinám a tá steká späť dole. Vzduchovanie robí v akváriu bublinky s kyslíkom.</desc>
+            <desc id="skD">1. Kŕmidlo nakŕmi rybičky. 2. Rybičky znečistia vodu. 3. Čerpadlo vytlačí vodu hore. 4. Baktérie v keramzite spravia z odpadu hnojivo. 5. Rastliny ho vypijú a čistá voda stečie späť do akvária.</desc>
             <defs>
               <symbol id="fish" viewBox="0 0 44 20"><path d="M2 10C8 2 22 1 32 10 22 19 8 18 2 10z" fill="#F2A922"/><path d="M8 9.5C14 7 22 7 30 10" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/><path d="M31 10l10-7v14z" fill="#F2A922"/><circle cx="8" cy="8.5" r="1.8" fill="#14284B"/></symbol>
               <pattern id="clay" width="22" height="18" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="5" fill="#F2A922" opacity=".35"/><circle cx="17" cy="13" r="5" fill="#F2A922" opacity=".25"/></pattern>
               <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1l8 4-8 4" fill="none" stroke="#14284B" stroke-width="1.6" stroke-linecap="round"/></marker>
             </defs>
-            <g class="part" data-part="svetlo">
-              <rect x="200" y="-66" width="360" height="18" rx="9" fill="#14284B"/><rect x="214" y="-50" width="332" height="6" rx="3" fill="#F2A922"/>
-              <g stroke="#F2A922" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10" opacity=".8"><path d="M250-36v40M330-36v40M410-36v40M490-36v40"/></g>
-              <path class="arrow" d="M640-40c-30-4-50-10-72-16" marker-end="url(#ah)"/><text class="t" x="610" y="-16">svetlo</text>
-            </g>
-            <g class="part" data-part="rastliny">
-              <g fill="#4FAE72">
+            <!-- staticke: lampa, akvarium, vzduch, stojan -->
+            <rect x="200" y="18" width="360" height="16" rx="8" fill="#14284B"/><rect x="214" y="32" width="332" height="5" rx="2" fill="#F2A922"/>
+            <g stroke="#F2A922" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10" opacity=".7"><path d="M250 44v18M330 44v18M410 44v18M490 44v18"/></g>
+            <text class="t s" x="580" y="36">svetlo</text>
+            <rect x="170" y="280" width="420" height="230" rx="10" fill="#D9F3F3" stroke="#14284B" stroke-width="3"/>
+            <path d="M172 304h416" stroke="#3CC6C9" stroke-width="2.5"/>
+            <path d="M172 488c60-10 130 6 200-2s140-6 216 0V508H172z" fill="#E9DDBF"/>
+            <rect x="70" y="524" width="64" height="34" rx="8" fill="#fff" stroke="#14284B" stroke-width="2.5"/>
+            <path d="M134 541h50V496h60" stroke="#14284B" stroke-width="2" fill="none"/><rect x="240" y="490" width="22" height="10" rx="4" fill="#14284B"/>
+            <g fill="none" stroke="#3CC6C9" stroke-width="2"><circle class="bub" cx="251" cy="482" r="4"/><circle class="bub" cx="246" cy="482" r="3"/><circle class="bub" cx="256" cy="482" r="3.5"/><circle class="bub" cx="250" cy="482" r="2.5"/></g>
+            <text class="t s" x="146" y="574">vzduch</text>
+            <rect x="150" y="514" width="460" height="14" rx="6" fill="#fff" stroke="#14284B" stroke-width="2.5"/>
+
+            <g class="part" data-part="rastliny" data-i="4">
+              <g fill="#4FAE72" transform="translate(0 38)">
                 <path class="sway" d="M230 112c-24-30-18-62 4-82 10 30 8 56-4 82z"/><path class="sway" d="M262 112c4-34 26-56 54-62-4 30-22 52-54 62z"/>
                 <path class="sway" d="M300 112c-10-26-4-48 14-64 6 26 2 46-14 64z" opacity=".8"/><path class="sway" d="M352 112c-22-22-46-28-70-22 16 20 38 26 70 22z" opacity=".75"/>
                 <path class="sway" d="M380 112c-6-40 8-70 36-88 6 36-6 64-36 88z"/><path class="sway" d="M430 112c2-28 20-46 46-52-2 26-18 44-46 52z" opacity=".85"/>
                 <path class="sway" d="M470 112c-16-24-14-50 4-70 12 26 10 48-4 70z"/><path class="sway" d="M520 112c-4-22 8-40 30-50 2 22-10 40-30 50z" opacity=".8"/>
               </g>
-              <circle cx="300" cy="66" r="8" fill="#E5533D"/><circle cx="452" cy="72" r="7" fill="#E5533D"/>
-              <path class="arrow" d="M118 70c30-8 60-6 96 4" marker-end="url(#ah)"/><text class="t" x="20" y="64">zelenina</text>
+              <path class="flow down" d="M222 214V300" stroke="#3CC6C9" stroke-width="7" fill="none"/>
+              <path class="arrow" d="M120 250c40 2 66 0 92-4" marker-end="url(#ah)"/><text class="t s" x="22" y="244">čistá voda</text>
+              <circle class="num" cx="150" cy="118" r="17"/><text class="nt" x="150" y="125">5</text><text class="t" x="30" y="126">rastliny</text>
             </g>
-            <g class="part" data-part="bakterie">
-              <rect x="190" y="112" width="380" height="64" rx="8" fill="#fff" stroke="#14284B" stroke-width="3"/>
-              <rect x="192" y="114" width="376" height="60" rx="6" fill="url(#clay)"/>
-              <path class="arrow" d="M640 150c-20 0-40 0-62 0" marker-end="url(#ah)"/><text class="t" x="600" y="128">keramzit</text><text class="t" x="600" y="186">+ baktérie</text>
+            <g class="part" data-part="bakterie" data-i="3">
+              <rect x="190" y="150" width="380" height="64" rx="8" fill="#fff" stroke="#14284B" stroke-width="3"/>
+              <rect x="192" y="152" width="376" height="60" rx="6" fill="url(#clay)"/>
+              <circle class="num" cx="612" cy="182" r="17"/><text class="nt" x="612" y="189">4</text><text class="t" x="636" y="190">baktérie</text>
             </g>
-            <g class="part" data-part="cerpadlo"><path class="flow down" d="M222 176V266" stroke="#3CC6C9" stroke-width="7" fill="none"/>
-              <path class="arrow" d="M120 238c40 2 66-4 92-14" marker-end="url(#ah)"/><text class="t" x="14" y="232">steká späť</text></g>
-            <rect x="170" y="242" width="420" height="230" rx="10" fill="#D9F3F3" stroke="#14284B" stroke-width="3"/>
-            <path d="M172 266h416" stroke="#3CC6C9" stroke-width="2.5"/>
-            <path d="M172 450c60-10 130 6 200-2s140-6 216 0V470H172z" fill="#E9DDBF"/>
-            <g class="part" data-part="ryby">
-              <g class="swim"><use href="#fish" x="300" y="300" width="56" height="26"/></g><g class="swim b"><use href="#fish" x="390" y="350" width="46" height="21"/></g>
-              <g class="swim c"><use href="#fish" x="270" y="392" width="50" height="23"/></g><g class="swim b"><use href="#fish" x="440" y="296" width="40" height="18"/></g>
-              <path class="arrow" d="M106 360c50 6 100 4 150 -6" marker-end="url(#ah)"/><text class="t" x="18" y="352">rybičky</text>
+            <g class="part" data-part="cerpadlo" data-i="2">
+              <path class="flow" d="M542 462V168" stroke="#8A7A4A" stroke-width="7" fill="none"/><rect x="522" y="462" width="42" height="36" rx="8" fill="#14284B"/>
+              <circle class="num" cx="612" cy="380" r="17"/><text class="nt" x="612" y="387">3</text><text class="t" x="636" y="388">čerpadlo</text>
             </g>
-            <g class="part" data-part="kyslik">
-              <rect x="70" y="486" width="64" height="38" rx="8" fill="#fff" stroke="#14284B" stroke-width="2.5"/>
-              <path d="M134 505h50V458h60" stroke="#14284B" stroke-width="2" fill="none"/><rect x="240" y="452" width="22" height="10" rx="4" fill="#14284B"/>
-              <g fill="none" stroke="#3CC6C9" stroke-width="2"><circle class="bub" cx="251" cy="444" r="4"/><circle class="bub" cx="246" cy="444" r="3"/><circle class="bub" cx="256" cy="444" r="3.5"/><circle class="bub" cx="250" cy="444" r="2.5"/></g>
-              <text class="t" x="44" y="560">vzduchovanie = kyslík</text>
+            <g class="part" data-part="ryby" data-i="1">
+              <g class="swim"><use href="#fish" x="300" y="340" width="56" height="26"/></g><g class="swim b"><use href="#fish" x="390" y="390" width="46" height="21"/></g>
+              <g class="swim c"><use href="#fish" x="270" y="432" width="50" height="23"/></g><g class="swim b"><use href="#fish" x="440" y="336" width="40" height="18"/></g>
+              <circle class="num" cx="150" cy="380" r="17"/><text class="nt" x="150" y="387">2</text><text class="t" x="24" y="388">rybičky</text>
             </g>
-            <g class="part" data-part="ryby"><path d="M410 206h44l-10 32h-24z" fill="#fff" stroke="#14284B" stroke-width="2.5" stroke-linejoin="round"/><circle cx="432" cy="248" r="2.5" fill="#F2A922"/><circle cx="428" cy="258" r="2" fill="#F2A922"/><text class="t" x="352" y="200">kŕmidlo</text></g>
-            <g class="part" data-part="cerpadlo">
-              <path class="flow" d="M542 424V130" stroke="#3CC6C9" stroke-width="7" fill="none"/><rect x="522" y="424" width="42" height="36" rx="8" fill="#14284B"/>
-              <path class="arrow" d="M640 470c-26 0-46-8-70-20" marker-end="url(#ah)"/><text class="t" x="640" y="478">čerpadlo</text>
-              <path class="arrow" d="M640 300c-30 0-58-6-84-18" marker-end="url(#ah)"/><text class="t" x="608" y="330">voda hore</text><text class="t" x="608" y="356">~150 l/h</text>
+            <g class="part" data-part="krmivo" data-i="0">
+              <path d="M420 232h44l-10 30h-24z" fill="#fff" stroke="#14284B" stroke-width="2.5" stroke-linejoin="round"/><circle cx="442" cy="272" r="2.5" fill="#F2A922"/><circle cx="438" cy="284" r="2" fill="#F2A922"/><circle cx="446" cy="296" r="2.2" fill="#F2A922"/>
+              <circle class="num" cx="490" cy="246" r="17"/><text class="nt" x="490" y="253">1</text>
             </g>
-            <rect x="150" y="478" width="460" height="16" rx="6" fill="#fff" stroke="#14284B" stroke-width="2.5"/>
           </svg>
         </div>
-        <div>
-          <ol class="steps" id="steps">
-            <li><button type="button" data-part="ryby"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16c6-8 16-9 22 0-6 9-16 8-22 0z"/><path d="M25 16l5-5v10z"/></svg></span><span><b>Rybičky</b>Zjedia krmivo z kŕmidla a do vody pustia odpad – hlavne amoniak, ktorý je pre ne jedovatý.</span></button></li>
-            <li><button type="button" data-part="bakterie"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="10" cy="12" r="5"/><circle cx="21" cy="10" r="4"/><circle cx="18" cy="22" r="6"/></svg></span><span><b>Baktérie</b>Bývajú na hlinených guľôčkach (keramzit) a z amoniaku spravia hnojivo – dusičnany.</span></button></li>
-            <li><button type="button" data-part="rastliny"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 29V15"/><path d="M16 18C14 11 8 8 3 9c1 7 6 10 13 9zM16 15c1-8 7-12 13-12-1 8-7 12-13 12z"/></svg></span><span><b>Rastliny</b>Hnojivo vypijú koreňmi. Voda, ktorá steká dole, je zase čistá.</span></button></li>
-            <li><button type="button" data-part="cerpadlo"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M16 4c5 7 8 11 8 15a8 8 0 01-16 0c0-4 3-8 8-15z"/></svg></span><span><b>Voda v obehu</b>Čerpadlo ju vytlačí hore, späť steká sama. Celé akvárium prejde rastlinami asi 3× za hodinu.</span></button></li>
-            <li><button type="button" data-part="kyslik"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="22" r="5"/><circle cx="21" cy="14" r="4"/><circle cx="13" cy="7" r="3"/></svg></span><span><b>Kyslík</b>Vzduchovanie robí bublinky. Kyslík dýchajú rybičky aj baktérie.</span></button></li>
-            <li><button type="button" data-part="svetlo"><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="6"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M7 7l3 3M22 22l3 3M7 25l3-3M22 10l3-3"/></svg></span><span><b>Svetlo</b>LED lampa nad rastlinami im nahrádza slnko – ráno sa zapne, večer zhasne.</span></button></li>
-          </ol>
-          <p class="loop"><svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M24 10a10 10 0 10 2 8"/><path d="M25 3v7h-7"/></svg>…a stále dookola</p>
+        <div class="story" aria-live="polite">
+          <p class="kick" id="stN">Krok 1 z 5</p>
+          <h3 id="stT">Kŕmidlo nakŕmi rybičky</h3>
+          <p id="stD">Raz denne pustí do vody dávku krmiva. Rybičky ho zjedia.</p>
+          <div class="stnav"><button type="button" class="btn ghost small" id="stP">‹ Späť</button><span class="dots" id="stDots"></span><button type="button" class="btn pri small" id="stX">Ďalej ›</button></div>
         </div>
       </div>
-      <div class="deep">
-        <h3 class="deep-h">Trochu podrobnejšie</h3>
+
+      <div class="model" id="model">
+        <h3>Takto bude farma vyzerať (3D model)</h3>
+        <p class="lead2">Celú farmu som si najprv postavil v počítači, aby som vedel, čo kam príde. Ťuknite na obrázok a zväčší sa.</p>
+        <div class="mview">
+          <figure class="mfig" id="mFig" tabindex="0" role="button" aria-label="Zväčšiť obrázok"><img id="mImg" src="img/model-popisky.png" alt="3D model farmy s popiskami"><span class="zoom">Zväčšiť</span></figure>
+          <div class="mside">
+            <div class="mtabs" role="tablist" id="mTabs"></div>
+            <div class="mcap" aria-live="polite"><b id="mT"></b><p id="mD"></p></div>
+            <ul class="mleg"><li><i style="background:#A9ABB0"></i>sivé – kúpené hotové</li><li><i style="background:#2680C6"></i>modré – vytlačí sa na 3D tlačiarni</li><li><i style="background:#E67E22"></i>oranžové – treba ešte dokúpiť</li></ul>
+          </div>
+        </div>
+        <dialog class="lb" id="lb" aria-label="Zväčšený obrázok"><div class="in"><img id="lbImg" alt=""><p id="lbCap"></p><button type="button" id="lbX">Zavrieť ✕</button></div></dialog>
+      </div>
+      <div class="keep">
+        <h3>Čo to drží pri živote</h3>
+        <div class="kgrid">
+          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="22" r="5"/><circle cx="21" cy="14" r="4"/><circle cx="13" cy="7" r="3"/></svg></span><p><b>Kyslík</b>Bublinky zo vzduchovania. Dýchajú ho rybičky aj baktérie a beží aj bez počítača.</p></div>
+          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="6"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M7 7l3 3M22 22l3 3M7 25l3-3M22 10l3-3"/></svg></span><p><b>Svetlo</b>LED lampa 33 cm nad rastlinami im nahrádza slnko. Zapína sa a vypína ako deň a noc.</p></div>
+          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M16 4c5 7 8 11 8 15a8 8 0 01-16 0c0-4 3-8 8-15z"/></svg></span><p><b>Dolievanie</b>Za 90 dní sa vyparí 15–30 litrov vody. Plavák to zistí a malé čerpadlo ju doleje z kanistra.</p></div>
+        </div>
+      </div>
+      <details class="more">
+        <summary>Pre zvedavých: čo presne robia baktérie</summary>
         <article class="dc wide">
           <div>
             <p class="kick">Srdce farmy</p>
@@ -516,62 +525,7 @@ body{background:#DCEEF2}
             </g>
           </svg>
         </article>
-        <div class="dgrid">
-          <article class="dc">
-            <svg class="mini" viewBox="0 0 220 130" aria-hidden="true">
-              <rect x="40" y="8" width="140" height="34" rx="6" fill="#FDF0D6" stroke="#14284B" stroke-width="2"/><text x="110" y="30" text-anchor="middle" font-family="Figtree,sans-serif" font-size="13" font-weight="700" fill="#14284B">rastliny</text>
-              <rect x="30" y="66" width="160" height="56" rx="6" fill="#D9F3F3" stroke="#14284B" stroke-width="2"/><text x="110" y="100" text-anchor="middle" font-family="Figtree,sans-serif" font-size="13" font-weight="700" fill="#14284B">akvárium</text>
-              <path class="flow" d="M166 110V42" stroke="#3CC6C9" stroke-width="5" fill="none"/><path class="flow down" d="M54 42V78" stroke="#3CC6C9" stroke-width="5" fill="none"/>
-              <rect x="158" y="106" width="16" height="12" rx="3" fill="#14284B"/>
-            </svg>
-            <h3>Cesta vody</h3>
-            <p>Čerpadlo na dne akvária tlačí asi 150 litrov za hodinu hore do lôžka. Keď voda v lôžku vystúpi po okraj prepadovej rúrky, stečie späť – lôžko teda nepretečie.</p>
-            <p>Časť vody sa vyparí a rastliny ju „vydýchajú“ cez listy – za 90 dní 15 až 30 litrov. Tú automaticky doleje malé čerpadlo z kanistra.</p>
-          </article>
-          <article class="dc">
-            <svg class="mini" viewBox="0 0 220 130" aria-hidden="true">
-              <rect x="20" y="10" width="180" height="110" rx="8" fill="#D9F3F3" stroke="#14284B" stroke-width="2"/>
-              <rect x="96" y="106" width="28" height="9" rx="4" fill="#14284B"/>
-              <g fill="none" stroke="#3CC6C9" stroke-width="2"><circle class="bub" cx="110" cy="100" r="5"/><circle class="bub" cx="104" cy="100" r="4"/><circle class="bub" cx="116" cy="100" r="4.5"/><circle class="bub" cx="110" cy="100" r="3"/></g>
-              <use href="#fish" x="34" y="40" width="50" height="23"/><use href="#fish" x="140" y="62" width="40" height="18"/>
-            </svg>
-            <h3>Kyslík</h3>
-            <p>Rybičky dýchajú kyslík rozpustený vo vode a baktérie bez neho nedokážu čistiť. Bublinky zo vzduchovania vodu premiešavajú a kyslík do nej pridávajú.</p>
-            <p>Vzduchovanie má vlastnú zásuvku a nič ho nevypína – beží, aj keby sa pokazil počítač.</p>
-          </article>
-          <article class="dc">
-            <svg class="mini" viewBox="0 0 220 130" aria-hidden="true">
-              <rect x="40" y="8" width="140" height="14" rx="7" fill="#14284B"/><rect x="50" y="20" width="120" height="5" rx="2" fill="#F2A922"/>
-              <g stroke="#F2A922" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 8"><path d="M80 34v34M110 34v34M140 34v34"/></g>
-              <path d="M110 122V84" stroke="#4FAE72" stroke-width="4" stroke-linecap="round"/><path d="M110 96c-8-14-24-18-38-14 6 14 20 18 38 14zM110 88c6-14 22-20 36-18-4 14-20 20-36 18z" fill="#4FAE72"/>
-            </svg>
-            <h3>Svetlo</h3>
-            <p>Rastliny si zo svetla, vody a vzduchu vyrábajú cukor, z ktorého rastú (fotosyntéza). Na stole v izbe je slnka málo, preto nad nimi visia LED lišty asi 33 cm nad lôžkom.</p>
-            <p>Svetlo sa zapína a vypína ako deň a noc, aby rastliny aj rybičky mali svoj rytmus.</p>
-          </article>
-        </div>
-      </div>
-
-      <div class="alone">
-        <div class="alone-h"><p class="kick">Inteligentné technológie</p><h3>Čo za mňa urobí počítač</h3><p>Prírodu nechávam pracovať samu. Počítač iba pomáha s vecami, ktoré by inak robil človek. A keby sa pokazil, rybičky to neohrozí – čerpadlo aj vzduch bežia bez neho.</p></div>
-        <div><span class="ph"><img src="img/krmenie.jpg" alt="" loading="lazy"></span><h3>Nakŕmi rybičky</h3><p>Otočné kŕmidlo dá každý deň jednu dávku a magnet overí, že sa naozaj otočilo.</p></div>
-        <div><span class="ph"><img src="img/voda.jpg" alt="" loading="lazy"></span><h3>Doleje vodu</h3><p>Plavák stráži hladinu. Keď klesne, malé čerpadlo doleje vodu z kanistra – nikdy nie viac, než treba.</p></div>
-        <div><span class="ph"><img src="img/arduino.jpg" alt="" loading="lazy"></span><h3>Stráži a hlási</h3><p>Senzory strážia teplotu, kvalitu vody aj únik. Kamera fotí rybičky a rastliny a umelá inteligencia raz denne všetko skontroluje a pošle mi správu.</p></div>
-      </div>
-    
-      <div class="model" id="model">
-        <h3>Takto bude farma vyzerať (3D model)</h3>
-        <p class="lead2">Celú farmu som si najprv postavil v počítači, aby som vedel, čo kam príde. Ťuknite na obrázok a zväčší sa.</p>
-        <div class="mview">
-          <figure class="mfig" id="mFig" tabindex="0" role="button" aria-label="Zväčšiť obrázok"><img id="mImg" src="img/model-popisky.png" alt="3D model farmy s popiskami"><span class="zoom">Zväčšiť</span></figure>
-          <div class="mside">
-            <div class="mtabs" role="tablist" id="mTabs"></div>
-            <div class="mcap" aria-live="polite"><b id="mT"></b><p id="mD"></p></div>
-            <ul class="mleg"><li><i style="background:#A9ABB0"></i>sivé – kúpené hotové</li><li><i style="background:#2680C6"></i>modré – vytlačí sa na 3D tlačiarni</li><li><i style="background:#E67E22"></i>oranžové – treba ešte dokúpiť</li></ul>
-          </div>
-        </div>
-        <dialog class="lb" id="lb" aria-label="Zväčšený obrázok"><div class="in"><img id="lbImg" alt=""><p id="lbCap"></p><button type="button" id="lbX">Zavrieť ✕</button></div></dialog>
-      </div>
+      </details>
     </section>
 
     <!-- POMOC -->
@@ -743,13 +697,21 @@ function renderRoad(){
 
 /* ---------- nakres: zvyraznenie casti ---------- */
 const sk=$("#sk");
-function hl(part){sk.classList.toggle("hl",!!part);sk.querySelectorAll(".part").forEach(g=>g.classList.toggle("on",g.dataset.part===part));
-  document.querySelectorAll("#steps button").forEach(b=>b.classList.toggle("on",b.dataset.part===part))}
-document.querySelectorAll("#steps button").forEach(b=>{
-  b.addEventListener("mouseenter",()=>hl(b.dataset.part));b.addEventListener("focus",()=>hl(b.dataset.part));
-  b.addEventListener("click",()=>hl(b.classList.contains("on")&&matchMedia("(pointer:coarse)").matches?null:b.dataset.part));
-});
-$("#steps").addEventListener("mouseleave",()=>hl(null));
+const ST=[["krmivo","Kŕmidlo nakŕmi rybičky","Raz denne pustí do vody dávku krmiva. Rybičky ho zjedia."],
+ ["ryby","Rybičky znečistia vodu","Čo zjedia, to vylúčia. Vo vode pribúda odpad, ktorý by ich časom otrávil."],
+ ["cerpadlo","Čerpadlo vytlačí vodu hore","Špinavá voda ide hadicou k rastlinám – asi 150 litrov za hodinu, celé akvárium asi 3× za hodinu."],
+ ["bakterie","Baktérie spravia z odpadu hnojivo","Bývajú na hlinených guľôčkach (keramzit). Kým sa rozmnožia, trvá to 3–6 týždňov – preto rybičky prídu až potom."],
+ ["rastliny","Rastliny vypijú hnojivo","Koreňmi si zoberú hnojivo a čistá voda stečie späť k rybičkám. A celé to ide znova dokola."]];
+let si=0;const dots=$("#stDots");
+ST.forEach((s,i)=>{const d=document.createElement("button");d.type="button";d.setAttribute("aria-label","Krok "+(i+1));d.onclick=()=>stGo(i);dots.append(d)});
+function stGo(i){si=(i+ST.length)%ST.length;const [p,t,d]=ST[si];
+  sk.classList.add("hl");sk.querySelectorAll(".part").forEach(g=>g.classList.toggle("on",g.dataset.part===p));
+  $("#stN").textContent="Krok "+(si+1)+" z "+ST.length;$("#stT").textContent=t;$("#stD").textContent=d;
+  $("#stX").textContent=si===ST.length-1?"Znova od začiatku ↻":"Ďalej ›";
+  dots.querySelectorAll("button").forEach((b,k)=>b.setAttribute("aria-current",k===si))}
+$("#stX").onclick=()=>stGo(si+1);$("#stP").onclick=()=>stGo(si-1);
+sk.addEventListener("click",e=>{const g=e.target.closest(".part");if(g)stGo(+g.dataset.i)});
+stGo(0);
 
 /* ---------- galeria 3D modelu ---------- */
 const MODEL=[
