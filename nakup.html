@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ATLAS – nákupný zoznam</title>
+<meta name="description" content="Nákupný zoznam projektu ATLAS: súčiastky, ceny a priame odkazy do e-shopov.">
+<meta name="theme-color" content="#14284B">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Nakupny zoznam: rovnaka paleta ako index.html (Hlboka voda). Data z polozky.js. */
+:root{
+  --navy:#14284B; --aqua:#3CC6C9; --sun:#F2A922;
+  --bg:#EAF4F6; --card:#FFFFFF; --soft:#4F5F78; --mute:#7F8CA2; --line:#D4E1E8;
+  --aqua-10:#D9F3F3; --aqua-d:#1E8E91; --sun-10:#FDF0D6; --sun-d:#B87A0B;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif;
+  --r:20px; color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--navy);font:16px/1.5 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--display);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin:0}
+a{color:inherit}
+header{background:var(--navy);color:#fff;padding:28px 16px 34px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px}
+header .wrap{padding:0}
+header a{color:var(--aqua);text-decoration:none;font-weight:600}
+header h1{font-size:clamp(30px,5vw,44px);margin:10px 0 8px}
+header p{color:#C9D6E6;max-width:640px}
+.sum{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.sum div{background:rgba(255,255,255,.08);border-radius:14px;padding:10px 14px}
+.sum b{display:block;font:800 22px var(--display);color:var(--sun)}
+.sum small{color:#C9D6E6}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 6px}
+.bar button{font:600 15px var(--body);border:2px solid var(--line);background:var(--card);color:var(--navy);border-radius:999px;padding:8px 16px;cursor:pointer}
+.bar button[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.note{color:var(--soft);font-size:14px;margin:6px 0 0}
+section{background:var(--card);border-radius:var(--r);padding:18px 18px 8px;margin:16px 0;box-shadow:0 1px 0 var(--line)}
+section h2{font-size:22px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+section h2 span{font:700 16px var(--body);color:var(--soft);white-space:nowrap}
+.it{display:grid;grid-template-columns:28px 1fr auto;gap:4px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.it:first-of-type{border-top:0}
+.it input{width:20px;height:20px;margin-top:3px;accent-color:var(--aqua-d)}
+.it .n{font-weight:700}
+.it .n a{text-decoration:none;border-bottom:2px solid var(--aqua)}
+.it .n a:hover{color:var(--aqua-d)}
+.it .p{font-weight:700;text-align:right;white-space:nowrap}
+.it .m{grid-column:2/4;color:var(--soft);font-size:14px}
+.tag{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;margin-right:6px;background:var(--aqua-10);color:var(--aqua-d)}
+.tag.o{background:var(--sun-10);color:var(--sun-d)}
+.tag.f{background:#E2E8F2;color:var(--soft)}
+.it.done .n,.it.done .p{text-decoration:line-through;color:var(--mute)}
+footer{color:var(--mute);font-size:14px;padding:10px 0 40px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a href="./">← späť na ATLAS</a>
+  <h1>Nákupný zoznam</h1>
+  <p>Všetky súčiastky s cenou a priamym odkazom do e-shopu. Odškrtnuté veci si pamätá tento prehliadač.</p>
+  <div class="sum" id="sum"></div>
+</div></header>
+<main class="wrap">
+  <div class="bar" role="group" aria-label="Zoskupiť podľa">
+    <button data-g="obchod" aria-pressed="true">Podľa obchodu</button>
+    <button data-g="kategoria" aria-pressed="false">Podľa kategórie</button>
+    <button data-f="1" aria-pressed="false">Len fáza 1</button>
+  </div>
+  <p class="note" id="info"></p>
+  <div id="list"></div>
+  <footer id="foot"></footer>
+</main>
+<script src="polozky.js"></script>
+<script>
+const P=window.POLOZKY||[], $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const eur=n=>n.toLocaleString("sk-SK",{minimumFractionDigits:2,maximumFractionDigits:2})+" €";
+let g="obchod", f1=false, kup={};
+try{kup=JSON.parse(localStorage.getItem("atlas-kupene")||"{}")}catch(_){}
+const faza1=p=>!/^(fáza 2|plán B)/i.test(p.priorita||"");
+function render(){
+  const L=P.filter(p=>!f1||faza1(p)), grp={};
+  L.forEach(p=>(grp[p[g]]=grp[p[g]]||[]).push(p));
+  const tot=L.reduce((s,p)=>s+p.cena,0), left=L.filter(p=>!kup[p.id]).reduce((s,p)=>s+p.cena,0);
+  const f1t=P.filter(faza1).reduce((s,p)=>s+p.cena,0);
+  $("#sum").innerHTML=`<div><b>${eur(f1t)}</b><small>fáza 1 spolu</small></div><div><b>${eur(left)}</b><small>ešte kúpiť (zobrazené)</small></div><div><b>${L.length}</b><small>položiek</small></div>`;
+  const odh=L.filter(p=>p.odhad).length;
+  $("#info").textContent=odh?`${odh} položiek má cenu len odhadom (oranžový štítok).`:"";
+  $("#list").innerHTML=Object.entries(grp).map(([k,ps])=>`<section><h2>${esc(k)}<span>${eur(ps.reduce((s,p)=>s+p.cena,0))}</span></h2>`+
+    ps.map(p=>`<div class="it${kup[p.id]?" done":""}"><input type="checkbox" data-id="${esc(p.id)}" ${kup[p.id]?"checked":""} aria-label="Kúpené: ${esc(p.nazov)}">
+    <div class="n">${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.nazov)}</a>`:esc(p.nazov)}</div>
+    <div class="p">${eur(p.cena)}</div>
+    <div class="m">${p.ks>1?`<span class="tag f">${p.ks} ks</span>`:""}${p.odhad?'<span class="tag o">odhad</span>':'<span class="tag">overené '+esc(p.overene||"")+'</span>'}${(p.priorita||"")!=="nutné"?`<span class="tag f">${esc(p.priorita)}</span>`:""}${esc(g==="obchod"?p.kategoria:p.obchod)}${p.poznamka?" · "+esc(p.poznamka):""}</div></div>`).join("")+`</section>`).join("");
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-g]");if(b){g=b.dataset.g;document.querySelectorAll("[data-g]").forEach(x=>x.setAttribute("aria-pressed",x===b));render()}
+  const f=e.target.closest("[data-f]");if(f){f1=!f1;f.setAttribute("aria-pressed",f1);render()}
+});
+document.addEventListener("change",e=>{const id=e.target.dataset.id;if(!id)return;
+  kup[id]=e.target.checked;try{localStorage.setItem("atlas-kupene",JSON.stringify(kup))}catch(_){};render()});
+$("#foot").textContent="Ceny sú orientačné k dátumu overenia, bez dopravy. Pred objednaním skontroluj cenu v e-shope.";
+render();
+</script>
+</body>
+</html>
