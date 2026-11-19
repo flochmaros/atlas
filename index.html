@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>ATLAS – akvapónická farma na stole</title>
-<meta name="description" content="Študentský projekt ATLAS: rybičky a zelenina v jednom stolovom akváriu, ktoré sa 3 mesiace postará samo.">
-<meta property="og:title" content="ATLAS – moja akvapónická farma na stole">
-<meta property="og:description" content="Akvárium a farma v jednom, ktoré sa 3 mesiace postará samo. Chcete mi pomôcť?">
+<title>ATLAS – akvapónická farma nad akváriom</title>
+<meta name="description" content="Študentský projekt ATLAS: bylinky a šalát rastú v žľabe nad akváriom v obývačke a živia sa z vody, v ktorej plávajú rybičky.">
+<meta property="og:title" content="ATLAS – moja akvapónická farma nad akváriom">
+<meta property="og:description" content="Rybičky hnoja bylinky a šalát, rastliny čistia vodu rybám. Staviam to nad akváriom v obývačke. Chcete mi pomôcť?">
 <meta property="og:image" content="https://flochmaros.github.io/atlas/img/akvaponia.jpg">
 <meta name="theme-color" content="#14284B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -274,7 +274,7 @@ body{background:#DCEEF2}
 .ap-frame{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 40px 90px -30px rgba(0,0,0,.7),0 0 0 6px rgba(255,255,255,.08);transform-style:preserve-3d}
 .ap-frame img{position:absolute;left:-3%;top:-3%;width:106%;height:106%;object-fit:cover;display:block;filter:saturate(1.15) contrast(1.05)}
 .ap-frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,40,75,0) 55%,rgba(20,40,75,.35));pointer-events:none}
-#bubbles{position:absolute;left:28%;top:64%;width:43%;height:28%;pointer-events:none;z-index:1}
+#bubbles{position:absolute;left:24%;top:58%;width:39%;height:25%;pointer-events:none;z-index:1}
 .ap-ov{position:absolute;inset:0;width:100%;height:100%;z-index:2}
 .fl{fill:none;stroke-width:10;stroke-linecap:round;stroke-dasharray:2 22;animation:flow2 1s linear infinite}
 .fl.up{stroke:var(--sun);filter:drop-shadow(0 0 6px #F2A922)}
@@ -287,7 +287,7 @@ body{background:#DCEEF2}
 .lbl{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 7px;border-radius:999px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--navy);font-weight:700;font-size:15px;box-shadow:0 10px 24px -10px rgba(0,0,0,.5);white-space:nowrap}
 .lbl i{animation:pinp 2.4s ease-in-out infinite}
 .lbl i,.legend i{font-style:normal;width:26px;height:26px;border-radius:50%;background:var(--sun);color:var(--navy);display:grid;place-items:center;font:800 14px var(--display);flex:none}
-.lbl{transform:translateY(-50%)}.l1{left:calc(44% - 20px);top:80%}.l2{left:calc(29.4% - 20px);top:40%}.l3{left:calc(56% - 20px);top:17%}.l4{left:calc(58% - 20px);top:56%}
+.lbl{transform:translateY(-50%)}.l1{left:calc(36.7% - 20px);top:72%}.l2{left:calc(19.3% - 20px);top:44%}.l3{left:calc(39.4% - 20px);top:17%}.l4{left:calc(57.5% - 20px);top:42%}
 .legend{display:none;list-style:none;margin:14px 0 0;padding:0;grid-template-columns:1fr 1fr;gap:8px}
 .legend li{display:flex;align-items:center;gap:8px;font-size:15px;color:#DDE6F2}
 .ap figcaption{margin-top:14px;font-size:14px;color:#9FB2CF}
@@ -348,7 +348,7 @@ body{background:#DCEEF2}
   <div class="wrap">
     <a class="logo" href="#ako" data-go="ako" aria-label="ATLAS – na začiatok">
       <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="3" y="14" width="34" height="23" rx="6" fill="#3CC6C9"/><path d="M3 21h34" stroke="#fff" stroke-width="2" opacity=".5"/><path d="M11 29c3-4 9-4 12 0-3 4-9 4-12 0z" fill="#F2A922"/><path d="M23 29l4-3v6z" fill="#F2A922"/><path d="M20 14c0-6 3-9 9-10-1 6-4 9-9 10zM20 14c-1-5-4-7-9-7 1 5 4 7 9 7z" fill="#4FAE72"/></svg>
-      <span><b data-name>ATLAS</b><small>akvapónická farma na stole</small></span></a>
+      <span><b data-name>ATLAS</b><small>akvapónická farma nad akváriom</small></span></a>
     <span class="mini" aria-hidden="true">Cieľ <span class="bar"><i id="miniBar"></i></span><b id="miniPct">0 %</b></span>
     <button class="btn pri small" type="button" data-go="pomoc">Pomôcť mi</button>
   </div>
@@ -359,8 +359,8 @@ body{background:#DCEEF2}
   <div class="wrap">
     <div class="hero-txt">
       <p class="kick h-in">Študentský projekt ATLAS</p>
-      <h1 class="h-in">Moja <em>akvapónická</em> farma na stole</h1>
-      <p class="lead h-in">Rybičky hnoja zeleninu a zelenina im za to čistí vodu. Jeden kolobeh, žiadna zemina – a ATLAS ho udrží 3 mesiace úplne sám.</p>
+      <h1 class="h-in">Moja <em>akvapónická</em> farma nad akváriom</h1>
+      <p class="lead h-in">Rybičky hnoja zeleninu a zelenina im za to čistí vodu. Jeden kolobeh, žiadna zemina. Stavím ho nad akváriom v obývačke a zatiaľ je to rozpracovaný projekt.</p>
       <p class="def h-in"><b>Akvapónia</b> = chov rybičiek + pestovanie zeleniny vo vode. Navzájom si pomáhajú.</p>
       <div class="ctas h-in">
         <button class="btn pri" type="button" data-go="pomoc">Chcete mi pomôcť? <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"/></svg></button>
@@ -368,24 +368,24 @@ body{background:#DCEEF2}
       </div>
       <div class="goal h-in" aria-live="polite">
         <svg class="ring" viewBox="0 0 90 90" aria-hidden="true"><circle class="bgc" cx="45" cy="45" r="36" fill="none" stroke-width="11"/><circle class="fg" id="ring" cx="45" cy="45" r="36" fill="none" stroke-width="11" stroke-linecap="round" stroke-dasharray="226.2" stroke-dashoffset="226.2" transform="rotate(-90 45 45)"/><text id="ringTxt" x="45" y="51" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="700" font-size="18" fill="#14284B">0 %</text></svg>
-        <div><b id="goalTxt">Načítavam…</b><span id="goalSub">Môj cieľ: kúpiť všetky súčiastky do Vianoc.</span></div>
+        <div><b id="goalTxt">Zbierka na súčiastky</b><span id="goalSub">Môj cieľ: kúpiť všetky súčiastky do Vianoc.</span></div>
       </div>
     </div>
     <figure class="ap h-scene">
       <div class="ap-frame">
-        <img src="img/model3d.png" alt="3D model farmy ATLAS: dole akvárium s rybkami, nad ním drevený rám s pestovacím boxom, keramzitom, potosom a bylinkami" width="1280" height="960">
+        <img src="img/foto-iso.webp" alt="Vizualizácia farmy ATLAS v obývačke: akvárium s rybičkami a nad ním polica so žľabom s bylinkami a šalátom" width="1280" height="960">
         <canvas id="bubbles" aria-hidden="true"></canvas>
         <svg class="ap-ov" viewBox="0 0 1280 960" aria-hidden="true">
-          <path class="fl up" d="M376 560V245Q376 210 412 210Q448 210 448 245V300"/>
-          <path class="fl dn" d="M744 520V600"/>
+          <path class="fl up" d="M246 660V300Q246 214 276 214"/>
+          <path class="fl dn" d="M736 310V457"/>
         </svg>
         <span class="lbl l1"><i>1</i>Rybičky robia hnojivo</span>
-        <span class="lbl l2"><i>2</i>Čerpadlo vozí vodu hore</span>
-        <span class="lbl l3"><i>3</i>Zelenina si ho vypije</span>
+        <span class="lbl l2"><i>2</i>Filter pošle vodu hore</span>
+        <span class="lbl l3"><i>3</i>Rastliny si ho vypijú</span>
         <span class="lbl l4"><i>4</i>Čistá voda tečie späť</span>
       </div>
-      <ol class="legend"><li><i>1</i>Rybičky robia hnojivo</li><li><i>2</i>Čerpadlo vozí vodu hore</li><li><i>3</i>Zelenina si ho vypije</li><li><i>4</i>Čistá voda tečie späť</li></ol>
-      <figcaption>Takto bude vyzerať ATLAS – môj 3D model z OpenSCADu. Dole rybky, hore rastlinky v keramzite.</figcaption>
+      <ol class="legend"><li><i>1</i>Rybičky robia hnojivo</li><li><i>2</i>Filter pošle vodu hore</li><li><i>3</i>Rastliny si ho vypijú</li><li><i>4</i>Čistá voda tečie späť</li></ol>
+      <figcaption>Takto bude vyzerať ATLAS – vizualizácia môjho 3D modelu. Dole akvárium s rybičkami, hore žľab s bylinkami.</figcaption>
     </figure>
   </div>
 </section>
@@ -393,13 +393,13 @@ body{background:#DCEEF2}
 <nav class="tiles-wrap gut" aria-label="Časti stránky" id="nav">
   <div class="wrap tiles" role="tablist">
     <button class="tile" role="tab" data-go="ako" aria-selected="true">
-      <span class="pic"><img src="img/nadrz.jpg" alt="" loading="lazy"></span>
+      <span class="pic"><img src="img/nadrz.jpg" alt="Akvárium s rybičkami" loading="lazy"></span>
       <h3>Ako to funguje</h3><p>Kreslený nákres krok po kroku</p></button>
     <button class="tile help" role="tab" data-go="pomoc" aria-selected="false">
       <span class="pic"><svg viewBox="0 0 120 80" aria-hidden="true"><rect x="34" y="30" width="52" height="40" rx="6" fill="#F2A922"/><rect x="30" y="22" width="60" height="14" rx="4" fill="#14284B"/><path d="M60 22v48" stroke="#fff" stroke-width="5"/><path d="M60 22c-8-14-22-14-20-4 2 6 12 5 20 4zm0 0c8-14 22-14 20-4-2 6-12 5-20 4z" fill="none" stroke="#14284B" stroke-width="3"/><path d="M98 18l3 6 6 1-5 4 1 6-5-3-5 3 1-6-5-4 6-1z" fill="#3CC6C9"/></svg></span>
       <h3>Chcete mi pomôcť?</h3><p>Dobrovoľný príspevok cez QR</p></button>
     <button class="tile" role="tab" data-go="postup" aria-selected="false">
-      <span class="pic"><img src="img/farma.jpg" alt="" loading="lazy"></span>
+      <span class="pic"><img src="img/farma.jpg" alt="Rastlinky v pestovacom systéme" loading="lazy"></span>
       <h3>Postup stavby</h3><p>Čo je hotové a čo príde</p></button>
     <button class="tile" role="tab" data-go="omne" aria-selected="false">
       <span class="pic" style="background:var(--sun-10)"><svg viewBox="0 0 120 80" aria-hidden="true"><circle cx="60" cy="30" r="14" fill="#14284B"/><path d="M34 76c4-18 14-26 26-26s22 8 26 26z" fill="#3CC6C9"/><path d="M88 22h20v14H96l-6 5v-5h-2z" fill="#fff" stroke="#14284B" stroke-width="2.5" stroke-linejoin="round"/></svg></span>
@@ -417,7 +417,7 @@ body{background:#DCEEF2}
         <div class="sketch">
           <svg id="sk" viewBox="0 0 760 580" role="img" aria-labelledby="skT skD">
             <title id="skT">Nákres akvaponickej farmy ATLAS</title>
-            <desc id="skD">1. Kŕmidlo nakŕmi rybičky. 2. Rybičky znečistia vodu. 3. Čerpadlo vytlačí vodu hore. 4. Baktérie v keramzite spravia z odpadu hnojivo. 5. Rastliny ho vypijú a čistá voda stečie späť do akvária.</desc>
+            <desc id="skD">1. Kŕmidlo nakŕmi rybičky. 2. Rybičky znečistia vodu. 3. Filter Oase pošle časť vody hore do žľabu. 4. Baktérie a korene spravia z odpadu hnojivo. 5. Rastliny ho vypijú a čistá voda stečie späť do akvária.</desc>
             <defs>
               <symbol id="fish" viewBox="0 0 44 20"><path d="M2 10C8 2 22 1 32 10 22 19 8 18 2 10z" fill="#F2A922"/><path d="M8 9.5C14 7 22 7 30 10" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/><path d="M31 10l10-7v14z" fill="#F2A922"/><circle cx="8" cy="8.5" r="1.8" fill="#14284B"/></symbol>
               <pattern id="clay" width="22" height="18" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="5" fill="#F2A922" opacity=".35"/><circle cx="17" cy="13" r="5" fill="#F2A922" opacity=".25"/></pattern>
@@ -454,7 +454,7 @@ body{background:#DCEEF2}
             </g>
             <g class="part" data-part="cerpadlo" data-i="2">
               <path class="flow" d="M542 462V168" stroke="#8A7A4A" stroke-width="7" fill="none"/><rect x="522" y="462" width="42" height="36" rx="8" fill="#14284B"/>
-              <circle class="num" cx="612" cy="380" r="17"/><text class="nt" x="612" y="387">3</text><text class="t" x="636" y="388">čerpadlo</text>
+              <circle class="num" cx="612" cy="380" r="17"/><text class="nt" x="612" y="387">3</text><text class="t" x="636" y="388">filter</text>
             </g>
             <g class="part" data-part="ryby" data-i="1">
               <g class="swim"><use href="#fish" x="300" y="340" width="56" height="26"/></g><g class="swim b"><use href="#fish" x="390" y="390" width="46" height="21"/></g>
@@ -476,14 +476,14 @@ body{background:#DCEEF2}
       </div>
 
       <div class="model" id="model">
-        <h3>Takto bude farma vyzerať (3D model)</h3>
-        <p class="lead2">Celú farmu som si najprv postavil v počítači, aby som vedel, čo kam príde. Ťuknite na obrázok a zväčší sa.</p>
+        <h3>Takto bude farma vyzerať</h3>
+        <p class="lead2">Celú farmu som si najprv postavil v počítači a obrázky sú vizualizácie tohto modelu. Takto viem, čo kam príde. Ťuknite na obrázok a zväčší sa.</p>
         <div class="mview">
-          <figure class="mfig" id="mFig" tabindex="0" role="button" aria-label="Zväčšiť obrázok"><img id="mImg" src="img/model-popisky.png" alt="3D model farmy s popiskami"><span class="zoom">Zväčšiť</span></figure>
+          <figure class="mfig" id="mFig" tabindex="0" role="button" aria-label="Zväčšiť obrázok"><img id="mImg" src="img/foto-iso.webp" alt="Vizualizácia farmy ATLAS v obývačke"><span class="zoom">Zväčšiť</span></figure>
           <div class="mside">
             <div class="mtabs" role="tablist" id="mTabs"></div>
             <div class="mcap" aria-live="polite"><b id="mT"></b><p id="mD"></p></div>
-            <ul class="mleg"><li><i style="background:#A9ABB0"></i>sivé – kúpené hotové</li><li><i style="background:#2680C6"></i>modré – vytlačí sa na 3D tlačiarni</li><li><i style="background:#E67E22"></i>oranžové – treba ešte dokúpiť</li></ul>
+            
           </div>
         </div>
         <dialog class="lb" id="lb" aria-label="Zväčšený obrázok"><div class="in"><img id="lbImg" alt=""><p id="lbCap"></p><button type="button" id="lbX">Zavrieť ✕</button></div></dialog>
@@ -491,9 +491,9 @@ body{background:#DCEEF2}
       <div class="keep">
         <h3>Čo to drží pri živote</h3>
         <div class="kgrid">
-          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="22" r="5"/><circle cx="21" cy="14" r="4"/><circle cx="13" cy="7" r="3"/></svg></span><p><b>Kyslík</b>Bublinky zo vzduchovania. Dýchajú ho rybičky aj baktérie a beží aj bez počítača.</p></div>
-          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="6"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M7 7l3 3M22 22l3 3M7 25l3-3M22 10l3-3"/></svg></span><p><b>Svetlo</b>LED lampa 33 cm nad rastlinami im nahrádza slnko. Zapína sa a vypína ako deň a noc.</p></div>
-          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M16 4c5 7 8 11 8 15a8 8 0 01-16 0c0-4 3-8 8-15z"/></svg></span><p><b>Dolievanie</b>Za 90 dní sa vyparí 15–30 litrov vody. Plavák to zistí a malé čerpadlo ju doleje z kanistra.</p></div>
+          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="22" r="5"/><circle cx="21" cy="14" r="4"/><circle cx="13" cy="7" r="3"/></svg></span><p><b>Kyslík</b>Bublinky zo vzduchovania akvária. Dýchajú ho rybičky aj baktérie. Kyslík ani filter nikdy nezávisia od počítača.</p></div>
+          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="16" cy="16" r="6"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M7 7l3 3M22 22l3 3M7 25l3-3M22 10l3-3"/></svg></span><p><b>Svetlo</b>LED lampa nad rastlinami im nahrádza slnko. Zapína sa a vypína ako deň a noc. Ak sa pokazí počítač, lampa sa len vypne.</p></div>
+          <div><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M16 4c5 7 8 11 8 15a8 8 0 01-16 0c0-4 3-8 8-15z"/></svg></span><p><b>Bezpečnosť</b>Pri vode je len 12 V. Pod žľabom je vanička so senzorom úniku. Keď sa niečo pokazí, voda zo žľabu jednoducho stečie späť do akvária.</p></div>
         </div>
       </div>
       <details class="more">
@@ -505,7 +505,7 @@ body{background:#DCEEF2}
             <p>Rybičky dýchajú žiabrami a pritom do vody vypúšťajú <b>amoniak</b>. V akváriu bez pomoci by sa ho nahromadilo toľko, že by ich otrávil.</p>
             <p>Tu nastúpia dve skupiny <b>baktérií</b>. Prvé zmenia amoniak na <b>dusitany</b> (tiež jedovaté), druhé dusitany na <b>dusičnany</b>. Tie sú pre ryby takmer neškodné – a pre rastliny sú to najlepšie hnojivo.</p>
             <p>Rastliny dusičnany vypijú a čistá voda sa vráti k rybičkám. Nikto nemusí sypať hnojivo ani meniť vodu.</p>
-            <p class="note">Baktérie sa musia najprv rozmnožiť. Preto farma beží 3–6 týždňov naprázdno a rybičky prídu až potom.</p>
+            <p class="note">Akvárium už baktérie má, ocko sa oň stará dlhšie. Rastliny a ich korene baktériám dajú ešte viac miesta.</p>
           </div>
           <svg class="dia" viewBox="0 0 420 380" role="img" aria-label="Kruh: rybičky, amoniak, baktérie, dusitany, baktérie, dusičnany, rastliny, čistá voda späť k rybičkám">
             <defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1l8 4-8 4z" fill="#1E8E91"/></marker></defs>
@@ -520,7 +520,7 @@ body{background:#DCEEF2}
               <circle cx="78" cy="190" r="48" fill="#E3F4E8" stroke="#4FAE72" stroke-width="2.5"/><text x="78" y="186" font-size="15" font-weight="700" fill="#14284B">dusičnany</text><text x="78" y="205" font-size="12" fill="#2F7A4B">hnojivo</text>
             </g>
             <g font-family="Caveat,cursive" font-size="21" font-weight="600" fill="#1E8E91" text-anchor="middle">
-              <text x="210" y="168">baktérie</text><text x="210" y="190">v keramzite</text><text x="210" y="220" font-size="17" fill="#4F5F78">pracujú 24 h denne</text>
+              <text x="210" y="168">baktérie</text><text x="210" y="190">na koreňoch</text><text x="210" y="220" font-size="17" fill="#4F5F78">pracujú 24 h denne</text>
               <text x="352" y="96">odpad</text><text x="330" y="300">baktérie č. 1</text><text x="88" y="300">baktérie č. 2</text><text x="68" y="96">rastliny vypijú</text>
             </g>
           </svg>
@@ -545,18 +545,18 @@ body{background:#DCEEF2}
     <section class="screen" data-v="postup" aria-label="Postup stavby" hidden>
       <div class="screen-head"><p class="kick">Postup stavby</p><h2>Kde je projekt práve teraz</h2><p class="lead">Každý krok tu zapíšem. Keď ATLAS ožije, uvidíte tu živé údaje a fotky z kamery.</p></div>
       <div class="road" id="road"></div>
-      <div class="live"><i></i><span>Živé údaje – teplota vody, hladina a kŕmenie – tu budú od jari 2027.</span></div>
+      <div class="live"><i></i><span>Živé údaje – teplota vody, hladina a kŕmenie – tu budú, keď dokončím elektroniku.</span></div>
     </section>
 
     <!-- O MNE -->
     <section class="screen" data-v="omne" aria-label="O mne" hidden>
       <div class="me">
-        <div class="ava"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="78" r="36" fill="#14284B"/><path d="M40 200c6-46 30-70 60-70s54 24 60 70z" fill="#3CC6C9"/><text x="100" y="186" text-anchor="middle" font-family="Caveat,cursive" font-weight="600" font-size="22" fill="#14284B">sem dám fotku</text></svg></div>
+        <div class="ava"><svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="78" r="36" fill="#14284B"/><path d="M40 200c6-46 30-70 60-70s54 24 60 70z" fill="#3CC6C9"/></svg></div>
         <div>
           <p class="kick">O mne</p>
           <h2 style="margin:8px 0 16px">Ahoj, som študent, ktorý rád stavia</h2>
-          <p>Ocko mi dal úlohu: postaviť akvárium, ktoré vydrží 3 mesiace bez nás. Rozhodol som sa, že v ňom budú rásť aj rastliny – a tak vznikla malá farma na stole.</p>
-          <p>Programujem Arduino, súčiastky kreslím pre 3D tlačiareň a túto stránku robím s pomocou umelej inteligencie. Každý krok si zapisujem do denníka.</p>
+          <p>V obývačke máme akvárium, o ktoré sa už dlho stará ocko. Nad ním som sa rozhodol postaviť malú farmu: v žľabe tam budú rásť bylinky a šalát a živiť sa budú vodou od rybičiek. Akvárium zostáva ockovo, nič z toho ho nesmie ohroziť.</p>
+          <p>Programujem Arduino, súčiastky kreslím pre 3D tlačiareň a túto stránku robím s pomocou umelej inteligencie. Každý krok si zapisujem do denníka. Projekt je rozpracovaný a zatiaľ je hotový len návrh a 3D model.</p>
           <div class="contact"><a class="mail" id="mail" href="#">e‑mail</a><button class="btn ghost small" type="button" id="copyMail">Kopírovať adresu</button></div>
         </div>
       </div>
@@ -583,10 +583,10 @@ const eur=n=>n.toLocaleString("sk-SK",{minimumFractionDigits:n%1?2:0,maximumFrac
 
 /* balicky prispevkov */
 const PK=[
-  {id:"jedlo",img:"img/krmenie.jpg",n:"Jedlo pre rybičky",d:"Krmivo a kŕmidlo na 3 mesiace",a:10,svg:'<rect x="30" y="18" width="40" height="52" rx="8" fill="#F2A922"/><rect x="26" y="12" width="48" height="12" rx="4" fill="#14284B"/><path d="M40 44c4-5 12-5 16 0-4 5-12 5-16 0z" fill="#fff"/><path d="M56 44l5-4v8z" fill="#fff"/>'},
-  {id:"zahradka",img:"img/salat.jpg",n:"Zelená záhradka",d:"Rastlinky, keramzit a svetlo",a:25,svg:'<path d="M32 46h36l-5 26H37z" fill="#F2A922"/><path d="M50 46c-2-16 4-26 16-32 2 16-4 26-16 32zM50 46c-10-6-20-6-26-2 6 6 16 6 26 2z" fill="#4FAE72"/><circle cx="62" cy="24" r="4" fill="#E5533D"/>'},
-  {id:"srdce",img:"img/voda.jpg",n:"Srdce akvária",d:"Čerpadlá a vzduchovanie",a:50,svg:'<path d="M50 70C28 56 20 44 20 34a14 14 0 0130-6 14 14 0 0130 6c0 10-8 22-30 36z" fill="#3CC6C9"/><path d="M36 40h8l4-8 6 16 4-8h8" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'},
-  {id:"mozog",img:"img/arduino.jpg",n:"Mozog a oči",d:"Počítač, senzory a kamera",a:100,svg:'<rect x="28" y="24" width="44" height="40" rx="8" fill="#14284B"/><path d="M36 16v8M50 16v8M64 16v8M36 64v8M50 64v8M64 64v8" stroke="#14284B" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="44" r="10" fill="#3CC6C9"/><circle cx="50" cy="44" r="4" fill="#fff"/>'},
+  {id:"jedlo",img:"img/krmenie.jpg",n:"Jedlo pre rybičky",d:"Krmivo a 3D tlačené kŕmidlo",a:10,svg:'<rect x="30" y="18" width="40" height="52" rx="8" fill="#F2A922"/><rect x="26" y="12" width="48" height="12" rx="4" fill="#14284B"/><path d="M40 44c4-5 12-5 16 0-4 5-12 5-16 0z" fill="#fff"/><path d="M56 44l5-4v8z" fill="#fff"/>'},
+  {id:"zahradka",img:"img/salat.jpg",n:"Zelená záhradka",d:"Rastlinky, substrát a LED svetlo",a:25,svg:'<path d="M32 46h36l-5 26H37z" fill="#F2A922"/><path d="M50 46c-2-16 4-26 16-32 2 16-4 26-16 32zM50 46c-10-6-20-6-26-2 6 6 16 6 26 2z" fill="#4FAE72"/><circle cx="62" cy="24" r="4" fill="#E5533D"/>'},
+  {id:"srdce",img:"img/voda.jpg",n:"Srdce farmy",d:"Hadice, ventil a žľab",a:50,svg:'<path d="M50 70C28 56 20 44 20 34a14 14 0 0130-6 14 14 0 0130 6c0 10-8 22-30 36z" fill="#3CC6C9"/><path d="M36 40h8l4-8 6 16 4-8h8" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'},
+  {id:"mozog",img:"img/arduino.jpg",n:"Mozog a oči",d:"Počítač ESP32, senzory a kamera",a:100,svg:'<rect x="28" y="24" width="44" height="40" rx="8" fill="#14284B"/><path d="M36 16v8M50 16v8M64 16v8M36 64v8M50 64v8M64 64v8" stroke="#14284B" stroke-width="4" stroke-linecap="round"/><circle cx="50" cy="44" r="10" fill="#3CC6C9"/><circle cx="50" cy="44" r="4" fill="#fff"/>'},
 ];
 let pick=PK[0], own=15, step=1, meno="", sprava="", rows=[];
 
@@ -688,7 +688,7 @@ async function drawQR(a,note){
 }
 
 /* ---------- postup ---------- */
-const ROAD=[["Výskum","nov 2026",1],["Návrh a schéma","nov 2026",1],["3D model a plán zapojenia","17. 11. 2026",1],["Odmerať diely a vytlačiť prvé diely","nov – dec 2026",0],["Zbieranie na súčiastky","dec 2026",0],["Stavba","jan – feb",0],["Zabehnutie vody","feb – mar",0],["Prídu rybičky","apr 2027",0],["90 dní sám","leto 2027",0]];
+const ROAD=[["Výskum","nov 2026",1],["Návrh a schéma","nov 2026",1],["3D model v0.3 a fotorealistické rendery","19. 11. 2026",1],["Nákup súčiastok","dec 2026",0],["Tlač dielov a montáž police a žľabu","jan 2027",0],["Elektronika a firmvér","jan – feb 2027",0],["Prvé rastliny","feb – mar 2027",0],["Živé dáta na webe","mar 2027",0]];
 function renderRoad(){
   const now=ROAD.findIndex(r=>!r[2]);
   $("#road").innerHTML=`<span class="pr" id="roadPr"></span>`+ROAD.map((r,i)=>`<div class="ms${r[2]?" done":i===now?" now":""}"><span class="dot"></span><b>${esc(r[0])}</b><span>${esc(r[1])}</span></div>`).join("");
@@ -697,11 +697,11 @@ function renderRoad(){
 
 /* ---------- nakres: zvyraznenie casti ---------- */
 const sk=$("#sk");
-const ST=[["krmivo","Kŕmidlo nakŕmi rybičky","Raz denne pustí do vody dávku krmiva. Rybičky ho zjedia."],
+const ST=[["krmivo","Kŕmidlo nakŕmi rybičky","Raz denne pustí do vody dávku krmiva. Rybičky ho zjedia. Počítač smie kŕmenie len vynechať, nikdy ho nepridá."],
  ["ryby","Rybičky znečistia vodu","Čo zjedia, to vylúčia. Vo vode pribúda odpad, ktorý by ich časom otrávil."],
- ["cerpadlo","Čerpadlo vytlačí vodu hore","Špinavá voda ide hadicou k rastlinám – asi 150 litrov za hodinu, celé akvárium asi 3× za hodinu."],
- ["bakterie","Baktérie spravia z odpadu hnojivo","Bývajú na hlinených guľôčkach (keramzit). Kým sa rozmnožia, trvá to 3–6 týždňov – preto rybičky prídu až potom."],
- ["rastliny","Rastliny vypijú hnojivo","Koreňmi si zoberú hnojivo a čistá voda stečie späť k rybičkám. A celé to ide znova dokola."]];
+ ["cerpadlo","Filter Oase pošle časť vody hore","Z filtra vedie hadica cez T-kus a ventil k rastlinám. Pošle sa len časť vody, zvyšok filtruje akvárium ako doteraz."],
+ ["bakterie","Baktérie a korene spravia z odpadu hnojivo","Baktérie premenia odpad rybičiek na živiny. Bývajú vo filtri aj na koreňoch rastlín v žľabe."],
+ ["rastliny","Rastliny ho vypijú","Koreňmi si zoberú živiny a čistá voda stečie samospádom späť do akvária. A celé to ide znova dokola."]];
 let si=0;const dots=$("#stDots");
 ST.forEach((s,i)=>{const d=document.createElement("button");d.type="button";d.setAttribute("aria-label","Krok "+(i+1));d.onclick=()=>stGo(i);dots.append(d)});
 function stGo(i){si=(i+ST.length)%ST.length;const [p,t,d]=ST[si];
@@ -715,18 +715,19 @@ stGo(0);
 
 /* ---------- galeria 3D modelu ---------- */
 const MODEL=[
-  {f:"model-popisky",s:"S popiskami",t:"Čo je čo",d:"Každá časť má svoj štítok. Dole pod stolom stoja dve kanistre s vodou, na stole akvárium a nad ním rastliny."},
-  {f:"model-celok",s:"Celá farma",t:"Celá farma",d:"Akvárium s rybičkami je dole, rastliny rastú hore na drevenom ráme a nad nimi svieti svetlo. Pod stolom sú kanistre s čistou a použitou vodou."},
-  {f:"model-rez",s:"Rez",t:"Pohľad dovnútra",d:"Ako keby sme farmu prekrojili. Voda ide z akvária hore k rastlinám, tie ju vyčistia a stečie späť k rybičkám."},
-  {f:"model-elektro",s:"Elektronika",t:"Modrá krabička s mozgom",d:"Tu býva počítač, ktorý všetko stráži: zapína čerpadlo, kŕmi rybičky, meria vodu a posiela správy do mobilu."}
+  {f:"foto-iso",s:"Celok",t:"Farma v obývačke",d:"Celý pohľad zboku a zhora: dole akvárium s rybičkami, nad ním polica so žľabom, v ktorom rastú bylinky a šalát."},
+  {f:"foto-predok",s:"Spredu",t:"Pohľad spredu",d:"Tak to uvidíte, keď sa postavíte pred akvárium. Rastliny sú hore, rybičky dole a medzi nimi vedú hadice."},
+  {f:"foto-vpravo",s:"Sprava",t:"Pohľad sprava",d:"Z boku vidno, ako polica so žľabom vyčnieva nad akvárium a kde stojí elektronika."},
+  {f:"foto-kanal",s:"Žľab",t:"Žľab s rastlinami",d:"Detail žľabu. Po dne tečie tenký prúd vody, korene rastlín sa v ňom namáčajú a čistá voda stečie späť do akvária."},
+  {f:"foto-akvarium",s:"Akvárium",t:"Akvárium a hadice",d:"Detail akvária. Z filtra Oase vedie hadica hore do žľabu a samospádom sa voda vracia späť. Akvárium zostáva ockovo."}
 ];
 (function(){
   const tabs=$("#mTabs"),img=$("#mImg"),lb=$("#lb");let cur=0;
-  tabs.innerHTML=MODEL.map((m,i)=>`<button type="button" role="tab" aria-selected="${i===0}" data-i="${i}"><img src="img/${m.f}.png" alt="" loading="lazy"><span>${m.s}</span></button>`).join("");
-  function show(i){cur=i;const m=MODEL[i];img.src=`img/${m.f}.png`;img.alt="3D model farmy – "+m.t;$("#mT").textContent=m.t;$("#mD").textContent=m.d;
+  tabs.innerHTML=MODEL.map((m,i)=>`<button type="button" role="tab" aria-selected="${i===0}" data-i="${i}"><img src="img/${m.f}.webp" alt="Náhľad: ${m.t}" loading="lazy"><span>${m.s}</span></button>`).join("");
+  function show(i){cur=i;const m=MODEL[i];img.src=`img/${m.f}.webp`;img.alt="3D model farmy – "+m.t;$("#mT").textContent=m.t;$("#mD").textContent=m.d;
     tabs.querySelectorAll("button").forEach((b,k)=>b.setAttribute("aria-selected",k===i))}
   tabs.addEventListener("click",e=>{const b=e.target.closest("button");if(b)show(+b.dataset.i)});
-  function open(){const m=MODEL[cur];$("#lbImg").src=`img/${m.f}.png`;$("#lbImg").alt=img.alt;$("#lbCap").textContent=m.t+" – "+m.d;if(lb.showModal)lb.showModal();else lb.setAttribute("open","")}
+  function open(){const m=MODEL[cur];$("#lbImg").src=`img/${m.f}.webp`;$("#lbImg").alt=img.alt;$("#lbCap").textContent=m.t+" – "+m.d;if(lb.showModal)lb.showModal();else lb.setAttribute("open","")}
   $("#mFig").addEventListener("click",open);
   $("#mFig").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}});
   $("#lbX").addEventListener("click",()=>lb.close?lb.close():lb.removeAttribute("open"));
